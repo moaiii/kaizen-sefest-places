@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2.43 15.02">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>sources</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2">
+      <path class="cls-1" d="M2.43,1.22A1.17,1.17,0,0,1,1.18,2.43,1.17,1.17,0,0,1,0,1.22,1.19,1.19,0,0,1,1.22,0,1.16,1.16,0,0,1,2.43,1.22ZM.25,15V4.25h2V15Z"/>
+    </g>
+  </g>
+</svg>

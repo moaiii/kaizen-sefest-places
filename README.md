@@ -5,7 +5,7 @@
 to use in VS CODE: set javascript.validate.enable option to false
 
 ### Components
-- `Card`
+- `Card` (HOC - stats, back)
 - `Sidebar`
 - `Filter`
 - `Toggle`
