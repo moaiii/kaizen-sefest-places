@@ -1,13 +1,22 @@
+#root {
+  overflow: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-user-select: none; 
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+  // -webkit-user-select: none; 
+  // -moz-user-select: none;
+  // -ms-user-select: none;
+  // -o-user-select: none;
+  // user-select: none;
 }
+
+// colors
+$green: #DDE37C;
+$blue: #D0E9EE;
+$grey: #677174;
 
 @mixin laptop {
   @media (max-width: 1024px) {
@@ -27,8 +36,34 @@
   }
 }
 
-@import "../views/detail/detail.scss";
+// fonts 
+@font-face {
+  font-family: 'lemonmilk';
+  src: url("../assets/font/LemonMilk.otf") format("opentype");
+}
+
+@mixin font-lemonmilk() {
+  font-family: 'lemonmilk', serif;
+}
+
+@font-face {
+  font-family: 'lemonmilk-light';
+  src: url("../assets/font/LemonMilklight.otf") format("opentype");
+}
+
+@mixin font-lemonmilk-light() {
+  font-family: 'lemonmilk-light', serif;
+}
+
+body {
+  background: linear-gradient(135deg, $blue, white);
+  height: 100vh;
+}
+
+@import "../views/stats/stats.scss";
 @import "../views/overview/overview.scss";
 @import "../views/splash/splash.scss";
 
 @import "../components/Intro/Intro.scss";
+@import "../components/Map/Map.scss";
+@import "../components/Card/Card.scss";

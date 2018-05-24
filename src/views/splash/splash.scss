@@ -1,0 +1,10 @@
+.Splash {
+  display: flex;
+  height: 100vh;
+  padding: 1rem;
+
+  > div {
+    width: 50%;
+    height: 100%;
+  }
+}

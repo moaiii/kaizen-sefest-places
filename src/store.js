@@ -8,20 +8,22 @@ import * as actions from './components/Intro/Intro.action';
 
 const customMiddleWare = store => next => action => {
 
-  if(action.type === "INITIALISE") {
-    store.dispatch(actions.startInit());
-    fetch(action.payload)
+  if(action.type === "FETCH_DATA") {
+    store.dispatch(actions.fetchData__pending());
+
+    fetch(action.payload.url)
       .then(res => {
         return res.json();
       })
       .then(json => {
-        store.dispatch(actions.resolved(json));
+        store.dispatch(actions.fetchData__resolved(json));
         next(action);
       })
-      .catch(err => {
-        console.log('Error getting repo', err);
+      .catch(error => {
+        store.dispatch(actions.fetchData__error(error));
         next(action);
       });
+      
   } else {
     next(action);
   }
@@ -34,6 +36,7 @@ let reducers = combineReducers({
 
 let store = createStore(
   reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(customMiddleWare, logger)
 );
 

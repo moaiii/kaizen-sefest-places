@@ -1,50 +1,51 @@
 // @flow
 // node_modules
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-// import {connect} from 'react-redux';
+
+// redux
 import store from '../../store';
 import * as IntroActions from '../../components/Intro/Intro.action';
 
-// redux
-// import store from '@versus-store';
-
 // sub-components
-// ........
+import Intro from '../../components/Intro/Intro';
+import Map from '../../components/Map/Map';
+
+type State = {
+  animate: string
+};
 
 type Props = {};
-type State = {};
 
 export class Splash extends Component<Props, State> {
   constructor() {
     super();
 
-    this.state = {};
+  }
+  state = {
+    animate: '--'
+  };
+
+  componentWillMount() {
+    let url = 'https://s3-eu-west-1.amazonaws.com/kaizen-safest-cities-data/data.json';
+    store.dispatch(IntroActions.fetchData(url));
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        animate: '--animate'
+      })
+    }, 50);
   }
 
   render() {
-    //const {} = this.props;
-    //const {} = this.state;
+    const { animate } = this.state;
 
     return (
-      <div className="Splash">
-        <p>splash</p>
-        <Link to={{
-          pathname: '/detail',
-          search: '?city=name',
-          hash: '',
-          state: { 
-            fromDashboard: true 
-          }
-        }}>Go To Detail</Link>
-        <button onClick={() => store.dispatch(IntroActions.initialise())}>Action</button>
+      <div className={`Splash ${animate}`}>
+        <Intro />
+        <Map size={`large`} city={'all'}/>
       </div>
     );
   }
 }
-
-// const storeToProps = (store) => {
-//   return {}
-// }
-
-// export default connect(storeToProps)(Splash);

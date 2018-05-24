@@ -2,15 +2,19 @@
 // node_modules
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 
 // redux
-// import store from '@versus-store';
+// eslint-disable-next-line
+import store from '../../store';
 
 // sub-components
-// ........
+import {Card} from '../../components/Card/Card';
 
-type Props = {};
+type Props = {
+  data?: Array<Object>
+};
+
 type State = {};
 
 export class Overview extends Component<Props, State> {
@@ -21,20 +25,30 @@ export class Overview extends Component<Props, State> {
   }
 
   render() {
-    //const {} = this.props;
+    const { data } = this.props;
     //const {} = this.state;
+
+    let cities = data 
+      ? data.map((city, index) => 
+        <Card 
+          key={`${index}-card`} 
+          index={index}
+          size={`small`}
+          city={{...city}}/>)
+      : [];
 
     return (
       <div className="Overview">
-        <p>Overview</p>
-        <Link to="/detail">detail</Link>
+        {cities}
       </div>
     );
   }
 }
 
-// const storeToProps = (store) => {
-//   return {}
-// }
+const storeToProps = (store) => {
+  return {
+    data: store.IntroReducer.data
+  }
+}
 
-// export default connect(storeToProps)(Overview);
+export default connect(storeToProps)(Overview);

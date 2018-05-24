@@ -1,26 +1,33 @@
 // @flow
-type InitAction = { type: string, payload: string };
+type Action = { 
+  +type: string, 
+  +payload: Object
+};
 
-type Action =
-  | InitAction;
-
-export const initialise = (): Action => {
-  return { 
-    type: "INITIALISE", 
-    payload: 'https://api.github.com/users/moaiii/repos' 
+export const fetchData = (url: string): Action => {
+  return {
+    type: "FETCH_DATA",
+    payload: { url }
   };
 }
 
-export const startInit = (): Action => {
-  return { 
-    type: "INITIALISE__PENDING", 
-    payload: '' 
+export const fetchData__pending = (): Action => {
+  return {
+    type: "FETCH_DATA__PENDING",
+    payload: { }
   };
 }
 
-export const resolved = (json: Array): Action => {
+export const fetchData__resolved = (data: Array<Object>): Action => {
   return { 
-    type: "INITIALISE__RESOLVED", 
-    payload: json
+    type: "FETCH_DATA__RESOLVED", 
+    payload: { data }
+  };
+}
+
+export const fetchData__error = (error: Object): Action => {
+  return { 
+    type: "FETCH_DATA__ERROR", 
+    payload: { error }
   };
 }

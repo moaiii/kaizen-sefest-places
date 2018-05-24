@@ -1,33 +1,51 @@
 // @flow
 type State = {
   +url: string,
+  +data: Array<Object>,
   +fetching: boolean,
-  +repos: array
+  +fetched: boolean,
+  +error: Object
 };
 
 type Action = {
  +type: string,
- +payload: string | boolean | object
+ +payload: Object
 }
 
-let initialState = {};
+let initialState: State = {
+  url: '',
+  data: [],
+  fetching: false,
+  fetched: false,
+  error: {}
+};
 
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
 
-  case "INITIALISE": {
+  case "FETCH_DATA": {
     return Object.assign({}, state, {
-      url: action.payload
+      url: action.payload.url,
     });
   }
-  case "INITIALISE__PENDING": {
+  case "FETCH_DATA__PENDING": {
     return Object.assign({}, state, {
-      fetching: true
+      fetching: true,
+      fetched: false
     });
   }
-  case "INITIALISE__RESOLVED": {
+  case "FETCH_DATA__RESOLVED": {
     return Object.assign({}, state, {
-      repos: action.payload
+      data: action.payload.data,
+      fetching: false,
+      fetched: true,
+    });
+  }
+  case "FETCH_DATA__ERROR": {
+    return Object.assign({}, state, {
+      fetching: false,
+      fetched: false,
+      error: action.payload.error
     });
   }
 
