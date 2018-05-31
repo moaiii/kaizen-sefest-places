@@ -4,10 +4,10 @@ type Action = {
   +payload: Object
 };
 
-export const fetchData = (url: string): Action => {
+export const fetchData = (): Action => {
   return {
     type: "FETCH_DATA",
-    payload: { url }
+    payload: { }
   };
 }
 
@@ -18,10 +18,10 @@ export const fetchData__pending = (): Action => {
   };
 }
 
-export const fetchData__resolved = (data: Array<Object>): Action => {
+export const fetchData__resolved = (data: Array<Object>, type: string): Action => {
   return { 
     type: "FETCH_DATA__RESOLVED", 
-    payload: { data }
+    payload: { data, type }
   };
 }
 

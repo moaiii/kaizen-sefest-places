@@ -1,0 +1,71 @@
+[
+  {
+    "name": "crime",
+    "sub": [
+      {
+        "name": "Burglary",
+        "selected": false
+      },
+      {
+        "name": "Robbery",
+        "selected": false
+      },
+      {
+        "name": "Violence & Sexual Offences",
+        "selected": false
+      }
+    ],
+    "selected": false
+  },
+  {
+    "name": "weather",
+    "sub": [
+      {
+        "name": "flooding",
+        "selected": false
+      },
+      {
+        "name": "av annual days of thunder",
+        "selected": false
+      }],
+    "selected": false
+  },
+  {
+    "name": "healthcare",
+    "sub": [
+      {
+        "name": "A&E attendances with wait < 4 hr",
+        "selected": false
+      },
+      {
+        "name": "Doctors /person",
+        "selected": false
+      },
+      {
+        "name": "Ambulance Response Time (min)",
+        "selected": false
+      },
+      {
+        "name": "Life-Threatening Ambulance Response < 8 Minutes",
+        "selected": false
+      }],
+    "selected": false
+  },
+  {
+    "name": "property",
+    "sub": [
+      {
+        "name": "Average House Price", 
+        "selected": false},
+      {
+        "name": "Average Property Age (Years)", 
+        "selected": false
+      },
+      {
+        "name": "Ground Movement", 
+        "selected": false
+      }
+    ],
+    "selected": false
+  }
+]

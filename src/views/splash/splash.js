@@ -26,9 +26,12 @@ export class Splash extends Component<Props, State> {
   };
 
   componentWillMount() {
-    let url = 'https://s3-eu-west-1.amazonaws.com/kaizen-safest-cities-data/data.json';
-    store.dispatch(IntroActions.fetchData(url));
+    store.dispatch(IntroActions.fetchData(/*url*/));
   }
+
+  shouldComponentUpdate(nextProps: Object, nextState: Object) {
+    return this.state.animate !== '--animate';
+  } 
 
   componentDidMount() {
     setTimeout(() => {
@@ -39,12 +42,15 @@ export class Splash extends Component<Props, State> {
   }
 
   render() {
+    process.env.REACT_APP_RENDER_DEBUG === 'true' 
+      ? console.log('rendering', this) : null;
+    
     const { animate } = this.state;
 
     return (
       <div className={`Splash ${animate}`}>
         <Intro />
-        <Map size={`large`} city={'all'}/>
+        <Map size={`large`} city={'glasgow'}/>
       </div>
     );
   }

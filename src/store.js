@@ -1,29 +1,25 @@
+import GridReducer from "./components/Grid/Grid.reducer.js"
+import SocialReducer from "./components/Social/Social.reducer.js"
+import FiltersReducer from "./components/Filters/Filters.reducer.js"
 import IntroReducer from "./components/Intro/Intro.reducer.js"
 
-import {createStore, applyMiddleware} from 'redux';
-import logger from 'redux-logger';
-import {combineReducers} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
+import { combineReducers } from 'redux';
 
-import * as actions from './components/Intro/Intro.action';
+// middlewares
+import { getData } from './middleware/getData';
+import { getFilteredList } from './middleware/getFilteredList';
 
 const customMiddleWare = store => next => action => {
-
+  
   if(action.type === "FETCH_DATA") {
-    store.dispatch(actions.fetchData__pending());
-
-    fetch(action.payload.url)
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        store.dispatch(actions.fetchData__resolved(json));
-        next(action);
-      })
-      .catch(error => {
-        store.dispatch(actions.fetchData__error(error));
-        next(action);
-      });
-      
+    getData(store, next, action);
+  
+  } else if (action.type === "SET_SELECTION") {
+    next(action);
+    getFilteredList(store, next, action);
+    
   } else {
     next(action);
   }
@@ -31,7 +27,12 @@ const customMiddleWare = store => next => action => {
 
 // Combine Reducers
 let reducers = combineReducers({
-  IntroReducer
+  IntroReducer, 
+  FiltersReducer
+});
+
+const logger = createLogger({
+  collapsed: true, diff: true
 });
 
 let store = createStore(

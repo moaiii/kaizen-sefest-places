@@ -1,4 +1,18 @@
 .Overview {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Overview__card-container {
+  width: 100%;
+  max-width: calc(100% - 300px);
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+}
+
+.Overview__filters-container {
+  max-width: 300px;
+  width: 30%;
 }

@@ -1,19 +1,25 @@
 .Map {
   padding: 2rem;
   width: 100%;
+  z-index: -1;
+
+  &.--london {
+    transform: scale(1.5);
+  }
 }
 
 .Map__svg {
-  // fill: $green;
+  fill: $green;
 }
 
 .Map__svg-wrapper {
   width: 100%;
+  height: 100%;
 }
 
 .Map__land {
   position: relative;
-  
+  height: 100%;
   fill: $green;
   
   &.--large {
@@ -24,7 +30,7 @@
 .Map__cities {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 86%;
   top: 0;
 
   .inner-wrapper {
@@ -37,4 +43,8 @@
 .city-svg__wrapper {
   position: absolute;
   width: 25px;
+
+  img {
+    width: 100%;
+  }
 }

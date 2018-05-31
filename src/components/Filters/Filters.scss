@@ -1,0 +1,157 @@
+.Filters {
+  background-color: white;
+  position: fixed;
+  height: 100vh;
+}
+
+.Filters__map {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+
+  p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    @include font-lemonmilk;
+    color: $grey;
+    text-align: center;
+  }
+}
+
+.Filters__toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-evenly;
+
+  p {
+    @include font-lemonmilk;
+    color: $grey;
+    text-align: center;
+  }
+}
+
+.switch {
+  width: 50px;
+  height: 3px;
+  position: relative;
+}
+
+.switch-indicator {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: $green;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  transition: transform 1s ease;
+  
+  &.--london {
+    transition: transform 1s ease;
+    transform: translateX(50px) translateY(-50%);
+  }
+}
+
+.switch-track {
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+  background-color: $grey;
+}
+
+.Filters__filters {
+  padding: 1rem 0;
+
+  > p {
+    text-align: center;
+    @include font-lemonmilk;
+    color: $grey;
+    font-size: 12px;
+  }
+}
+
+.filters__button {
+  width: 100%;
+  background: transparent;
+  padding: 5px 0;
+  @include font-lemonmilk;
+  color: $grey;
+  font-size: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  &.--selected {
+    border: 2px solid $grey;
+  } 
+}
+
+.filters__options-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filters__option {
+  width: 50%;
+  padding: 1rem;
+  transition: transform 0.5s ease;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    transform: translateX(8px);
+    margin: 0 auto;
+  }
+
+  button {
+    margin-top: 5px;
+  }
+  
+  &:hover {
+    .filters__option-wrapper {
+      transition: transform 0.5s ease;
+      transform: translateY(-5px) translateX(8px);
+    }
+  }
+}
+
+.filters__option-wrapper  {
+  transition: transform 0.5s ease;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.filters__subcategories {
+  opacity: 0;
+
+  &.--selected {
+    opacity: 1;
+  }
+
+  li {
+    margin: 3px 0;
+    opacity: 0.7;
+    list-style: none;
+    font-size: 10px;
+    @include font-lemonmilk;
+    color: $grey;
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 1;
+    }
+
+    &.--selected {
+      opacity: 1;
+    }
+  }
+}

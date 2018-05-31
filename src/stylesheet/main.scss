@@ -1,22 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 #root {
   overflow: hidden;
+  filter: saturate(1.2);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // -webkit-user-select: none; 
-  // -moz-user-select: none;
-  // -ms-user-select: none;
-  // -o-user-select: none;
-  // user-select: none;
+  -webkit-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+button, a {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 // colors
 $green: #DDE37C;
 $blue: #D0E9EE;
 $grey: #677174;
+
+$card-colors: (
+  #7499EB,
+  #728DE8,
+  #7082E5,
+  #6E77E2,
+  #6D6DDF,
+  #756BDD,
+  #7C69DA,
+  #8368D7,
+  #8A66D4,
+  #9065D1,
+  #9763CF,
+  #9D61CC,
+  #A360C9,
+  #A95EC6,
+  #AF5DC3,
+  #B45BC1,
+  #BA59BE,
+  #BB58B7,
+  #B856AD,
+  #B555A3,
+  #B35398,
+  #B0528E,
+  #AD5085,
+  #AA4E7B,
+  #A74D72,
+  #A54B69,
+  #A24A60,
+  #9F4857,
+  #9C474F,
+  #9A4646
+);
 
 @mixin laptop {
   @media (max-width: 1024px) {
@@ -55,10 +97,21 @@ $grey: #677174;
   font-family: 'lemonmilk-light', serif;
 }
 
+@mixin roboto {
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
   background: linear-gradient(135deg, $blue, white);
-  height: 100vh;
+  height: 100%;
+  filter: saturate(1.1);
 }
+
+p {
+  @include roboto;
+}
+
 
 @import "../views/stats/stats.scss";
 @import "../views/overview/overview.scss";
@@ -67,3 +120,7 @@ body {
 @import "../components/Intro/Intro.scss";
 @import "../components/Map/Map.scss";
 @import "../components/Card/Card.scss";
+@import "../components/Filters/Filters.scss";
+@import "../components/Social/Social.scss";
+
+@import "../components/Grid/Grid.scss";

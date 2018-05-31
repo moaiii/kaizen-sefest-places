@@ -30,6 +30,9 @@ export default class Intro extends Component<Props, State> {
   }
 
   render() {
+    process.env.REACT_APP_RENDER_DEBUG === 'true' 
+      ? console.log('rendering', this) : null;
+    
     const { animate } = this.state;
 
     let openingTitle = <p className={`Intro__title ${animate}`}>

@@ -8,8 +8,9 @@ import {connect} from 'react-redux';
 import store from '../../store';
 
 // sub-components
-import {Card} from '../../components/Card/Card';
+import Card from '../../components/Card/Card';
 import Map from '../../components/Map/Map';
+import {Grid} from '../../components/Grid/Grid';
 
 type Props = {
   data: Object
@@ -33,21 +34,25 @@ export class Stats extends Component<Props, State> {
     
     let data = store
       .getState().IntroReducer.data
-      .filter(city => city.City.toLowerCase() === urlCity.toLowerCase())[0];
+      .filter(city => {
+        return city.Name.toLowerCase() === decodeURI(urlCity).toLowerCase()
+      })[0];
 
     this.setState({ data }, () => console.log(data))
   }
 
   render() {
-    const { data } = this.state;
-    //const {} = this.state;
+    process.env.REACT_APP_RENDER_DEBUG === 'true' 
+      ? console.log('rendering', this) : null;
     
-    if(typeof data.City !== 'undefined') {
+    const { data } = this.state;
+
+    if(typeof data.Name !== 'undefined') {
       return (
         <div className="Stats">
           <Card city={data} index={1} size={'large'}/>
-          {/* <StatGrid /> */}
-          <Map city={data.City.toLowerCase()} size={`large`}/>
+          <Grid data={data}/>
+          <Map city={data.Name.toLowerCase()} size={`large`}/>
         </div>
       );
     } else {

@@ -3,6 +3,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// redux
+import store from '../../store';
+import {connect} from 'react-redux';
+
 // sub-components
 import FaAngleRight from 'react-icons/lib/fa/angle-right';
 
@@ -37,14 +41,15 @@ let imgSrc = {
 }
 
 type Props = {
-  +city: Object,
-  +index: number,
-  +size: string
+  city: Object,
+  index: number,
+  size: string,
+  filtering: boolean
 };
 
 type State = {};
 
-export class Card extends Component<Props, State> {
+class Card extends Component<Props, State> {
   constructor() {
     super();
 
@@ -52,31 +57,48 @@ export class Card extends Component<Props, State> {
   }
 
   render() {
-    const { city, index, size } = this.props;
+    process.env.REACT_APP_RENDER_DEBUG === 'true' 
+      ? console.log('rendering', this) : null;
+    
+    const { city, index, size, filtering } = this.props;
     //const {} = this.state;
 
-    let rank = <h1>{index}</h1>
+    let animate = filtering ? '--animate' : '';
+
+    let rank = <h1 className={`Card__rank ${animate}`}>
+      {index}
+    </h1>
     
-    let cityName = <h2>{city.City.replace(/"/g, '')}</h2>;
+    let cityName = <h2 className={`Card__city ${animate}`}>
+      {city.Name.replace(/"/g, '')}
+    </h2>;
     
     let anchorPathname = size === `large` ? `overview` : `stats`;
-    let anchorSearch = size === `large` ? `` : `?city=${city.City}`;
+    
+    let anchorSearch = size === `large` ? `` : `?city=${city.Name}`;
 
-    let anchor = <Link className={`Card__link --${anchorPathname}`} to={{
+    let anchor = <Link className={`Card__link --${anchorPathname} ${animate}`} 
+      to={{
         pathname: `/${anchorPathname}`,
         search: `${anchorSearch}`
-        }}>
-      <p className={`Card__link-text`}>{anchorPathname === 'overview' ? 'back' : 'stats'}</p>
-      <FaAngleRight/>
+      }}>
+      <p className={`Card__link-text ${animate}`}>{anchorPathname === 'overview' ? 'back' : 'stats'}</p>
+      <FaAngleRight className={`Card__link-text-arrow ${animate}`}/>
     </Link>
 
-    let image = <div className={`Card__image`}>
-      <img src={imgSrc[city.City.toLowerCase()]}/>
+    // TODO: get london boroughs images
+    let imageURL = city.DataType === 'london' 
+      ? imgSrc['london'] : imgSrc[city.Name.toLowerCase()];
+
+    let image = <div className={`Card__image ${animate}`}>
+      <img src={imageURL}/>
     </div>
+
+    let wipe = <div className={`Card__wipe ${animate}`}></div>
 
     return (
       <div className={`Card --${size}`}>
-        <div className="inner-wrapper">
+        <div className="card-inner-wrapper">
           {rank}
           {cityName}
           {anchor}
@@ -86,3 +108,11 @@ export class Card extends Component<Props, State> {
     );
   }
 }
+
+const storeToProps = (store) => {
+  return {
+    filtering: store.FiltersReducer.filtering
+  }
+}
+
+export default connect(storeToProps)(Card);
