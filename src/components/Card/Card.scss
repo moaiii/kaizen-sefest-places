@@ -6,9 +6,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all 0.25s ease;
+  transform: translateY(0px);
 
   &.--large {
     height: auto;
+    max-height: 600px;
   }
   
   @include laptop {
@@ -17,6 +20,12 @@
 
   @include tablet {
     width: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    transition: all 0.25s ease;
+    box-shadow: -1px 12px 14px 3px rgba(0,0,0,0.1);
   }
   
   .card-inner-wrapper {
@@ -101,6 +110,7 @@
 }
 
 .Card__city {
+  padding: 0 1rem;
   transition: transform 0.5s ease 0.25s;
   transform: translateX(0);
   

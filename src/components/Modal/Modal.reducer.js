@@ -1,27 +1,24 @@
 // @flow
 type State = {
-  +name: string, 
-  +rank: number
+  isOpen: boolean
 };
 
 type Action = {
  type: string,
- payload: Object
-};
+ payload: boolean
+}
 
 let initialState = {
-  name: '',
-  rank: 1
+  isOpen: false
 };
 
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
 
-    case "SET_SELECTED_CITY": {
+    case "SET_MODAL_VISIBILITY": {
       return Object.assign({}, state, {
-        name: action.payload.name,
-        rank: action.payload.rank
-      })
+        isOpen: action.payload
+      });
     }
 
     default: {

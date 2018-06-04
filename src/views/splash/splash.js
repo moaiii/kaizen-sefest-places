@@ -26,7 +26,7 @@ export class Splash extends Component<Props, State> {
   };
 
   componentWillMount() {
-    store.dispatch(IntroActions.fetchData(/*url*/));
+    store.dispatch(IntroActions.fetchData());
   }
 
   shouldComponentUpdate(nextProps: Object, nextState: Object) {
@@ -50,7 +50,7 @@ export class Splash extends Component<Props, State> {
     return (
       <div className={`Splash ${animate}`}>
         <Intro />
-        <Map size={`large`} city={'glasgow'}/>
+        <Map size={`large`} city={'all'}/>
       </div>
     );
   }

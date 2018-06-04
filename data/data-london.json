@@ -33,8 +33,8 @@
     "Safety Score": 7,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "64%",
+      "top": "35%"
     }
   },
   {
@@ -71,8 +71,8 @@
     "Safety Score": 6.87,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "30%",
+      "top": "34%"
     }
   },
   {
@@ -109,8 +109,8 @@
     "Safety Score": 6.87,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "66%",
+      "top": "47%"
     }
   },
   {
@@ -147,8 +147,8 @@
     "Safety Score": 4.38,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "25%",
+      "top": "41%"
     }
   },
   {
@@ -185,8 +185,8 @@
     "Safety Score": 7.07,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "61%",
+      "top": "56%"
     }
   },
   {
@@ -223,46 +223,8 @@
     "Safety Score": 6.17,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
-    }
-  },
-  {
-    "Name": "City of London",
-    "DataType": "london",
-    "Population": 9401,
-    "*Total Crime": 837,
-    "Crime Score": 1.37,
-    "*Burglary": 27,
-    "*Robbery": 19,
-    "Violence and Sexual Offences": 135,
-    "*Flooding": "2%",
-    "Flooding-index": 1,
-    "*Av Annual Days of Thunder": 15,
-    "Average Annual Days of Thunder - index": 10,
-    "Weather Score": 1,
-    "*A&E attendance wait < 4hr": "84.6%",
-    "% of A&E Attendances With a Wait Less than 4 Hours - index": 4.65,
-    "*Doctors Per Person": 0.75,
-    "Doctors Per Person - index": 10,
-    "*Median Ambulance Response Time": "4:51 mins",
-    "Median Ambulance Response Time (Fractional)": 4.85,
-    "Median Ambulance Response Time - index": 10,
-    "*Ambulance Response Times < 8min": "80%",
-    "% of Life-Threatening Ambulance Response Times under 8 Minutes - index": 10,
-    "Healthcare Score": 8.22,
-    "*Av House Price": 761277,
-    "Property Age": 1934,
-    "*Av Property Age":" 84 years",
-    "Average Property Age (Years) - index": 2.69,
-    "* Ground Movement": "1.00%",
-    "Ground Movement - index": 5.5,
-    "Property Score": 4.1,
-    "Safety Score": 3.67,
-    "imgSrc": "../assets/cities/london.jpg",
-    "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "44%",
+      "top": "35%"
     }
   },
   {
@@ -299,8 +261,8 @@
     "Safety Score": 5.19,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "45%",
+      "top": "57%"
     }
   },
   {
@@ -337,8 +299,8 @@
     "Safety Score": 6.41,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "28%",
+      "top": "40%"
     }
   },
   {
@@ -375,8 +337,8 @@
     "Safety Score": 6.95,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "46%",
+      "top": "32%"
     }
   },
   {
@@ -413,8 +375,8 @@
     "Safety Score": 7.7,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "58%",
+      "top": "48%"
     }
   },
   {
@@ -451,8 +413,8 @@
     "Safety Score": 6.07,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "54%",
+      "top": "38%"
     }
   },
   {
@@ -489,8 +451,8 @@
     "Safety Score": 4.6,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "29%",
+      "top": "42%"
     }
   },
   {
@@ -527,8 +489,8 @@
     "Safety Score": 5.77,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "52%",
+      "top": "36%"
     }
   },
   {
@@ -565,8 +527,8 @@
     "Safety Score": 6.96,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "29%",
+      "top": "33%"
     }
   },
   {
@@ -603,8 +565,8 @@
     "Safety Score": 5.74,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "72%",
+      "top": "47%"
     }
   },
   {
@@ -641,8 +603,8 @@
     "Safety Score": 6.66,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "9%",
+      "top": "43%"
     }
   },
   {
@@ -679,8 +641,8 @@
     "Safety Score": 6.74,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "12%",
+      "top": "56%"
     }
   },
   {
@@ -717,8 +679,8 @@
     "Safety Score": 3.67,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "45%",
+      "top": "44%"
     }
   },
   {
@@ -755,8 +717,8 @@
     "Safety Score": 5.11,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "40%",
+      "top": "37%"
     }
   },
   {
@@ -793,8 +755,8 @@
     "Safety Score": 5.67,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "23%",
+      "top": "50%"
     }
   },
   {
@@ -831,8 +793,8 @@
     "Safety Score": 5.03,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "38%",
+      "top": "44%"
     }
   },
   {
@@ -869,8 +831,8 @@
     "Safety Score": 7.12,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "55%",
+      "top": "44%"
     }
   },
   {
@@ -907,8 +869,8 @@
     "Safety Score": 6.88,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "38%",
+      "top": "46%"
     }
   },
   {
@@ -945,8 +907,8 @@
     "Safety Score": 7.5,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "62%",
+      "top": "35%"
     }
   },
   {
@@ -983,8 +945,8 @@
     "Safety Score": 7.44,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "62%",
+      "top": "30%"
     }
   },
   {
@@ -1021,8 +983,8 @@
     "Safety Score": 7.15,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "18%",
+      "top": "42%"
     }
   },
   {
@@ -1059,8 +1021,8 @@
     "Safety Score": 5.35,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "47%",
+      "top": "40%"
     }
   },
   {
@@ -1097,8 +1059,8 @@
     "Safety Score": 7.69,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "32%",
+      "top": "52%"
     }
   },
   {
@@ -1135,8 +1097,8 @@
     "Safety Score": 9.62,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "48%",
+      "top": "34%"
     }
   },
   {
@@ -1173,8 +1135,8 @@
     "Safety Score": 5.93,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "52%",
+      "top": "26%"
     }
   },
   {
@@ -1211,8 +1173,8 @@
     "Safety Score": 7.21,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "40%",
+      "top": "44%"
     }
   },
   {
@@ -1249,8 +1211,8 @@
     "Safety Score": 4.8,
     "imgSrc": "../assets/cities/london.jpg",
     "map-position": {
-      "left": "76%",
-      "top": "76%"
+      "left": "44%",
+      "top": "35%"
     }
   }
 ]

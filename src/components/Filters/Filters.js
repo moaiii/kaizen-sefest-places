@@ -20,7 +20,9 @@ import {FilterMap} from './subcomponents/FilterMap';
 // ......
 
 // types
-type Props = {};
+type Props = {
+  location: 'string'
+};
 
 type State = {
   animate: '' | 'animate',
@@ -36,7 +38,7 @@ type State = {
 };
 
 // class
-export class Filters extends Component<Props, State> {
+class Filters extends Component<Props, State> {
   constructor() {
     super();
 
@@ -95,10 +97,11 @@ export class Filters extends Component<Props, State> {
     process.env.REACT_APP_RENDER_DEBUG === 'true' 
       ? console.log('rendering', this) : null;
     
-    //const {} = this.props;
+    const { location } = this.props;
     const { animate, togglePosition, categories } = this.state;
 
     let map = <FilterMap 
+      location={location}
       animate={animate}/>
 
     let toggle = <FilterToggle
@@ -112,12 +115,23 @@ export class Filters extends Component<Props, State> {
       handleCategorySelect={this.handleCategorySelect}
       handleSubCategorySelect={this.handleSubCategorySelect}/>
 
+    let social = <Social />
+
     return (
       <div className="Filters">
         {map}
         {toggle}
         {filters}
+        {social}
       </div>
     );
   }
 }
+
+const storeToProps = (store) => {
+  return {
+    location: store.FiltersReducer.location
+  }
+}
+
+export default connect(storeToProps)(Filters);

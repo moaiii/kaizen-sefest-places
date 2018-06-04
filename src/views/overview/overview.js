@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 // redux
 import {connect} from 'react-redux';
 import store from '../../store';
+import * as IntroActions from '../../components/Intro/Intro.action';
 
 // sub-components
 import Card from '../../components/Card/Card';
-import {Filters} from '../../components/Filters/Filters';
+import Filters from '../../components/Filters/Filters';
+import Modal from '../../components/Modal/Modal';
 
 // assets
 
@@ -28,6 +30,10 @@ export class Overview extends Component<Props, State> {
     super();
 
     this.state = {};
+  }
+
+  componentWillMount() {
+    store.dispatch(IntroActions.fetchData());
   }
 
   render() {
@@ -55,10 +61,13 @@ export class Overview extends Component<Props, State> {
         <Filters />
       </div>
 
+      let modal = <Modal />
+
     return (
       <div className="Overview">
         {cities}
         {filters}
+        {modal}
       </div>
     );
   }

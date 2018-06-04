@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  height: 100vh;
+  background: linear-gradient(135deg, #D0E9EE, white);
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .Overview__card-container {

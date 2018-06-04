@@ -1,20 +1,28 @@
 .Map {
   padding: 2rem;
   width: 100%;
-  z-index: -1;
+  // z-index: -1;
 
   &.--london {
-    transform: scale(1.5);
+    // transform: scale(1.5);
+
+
   }
 }
 
 .Map__svg {
+  height: 100%;
   fill: $green;
+  width: 100%;
 }
 
 .Map__svg-wrapper {
   width: 100%;
   height: 100%;
+
+  > div {
+    height: 100%;
+  }
 }
 
 .Map__land {
@@ -25,12 +33,20 @@
   &.--large {
     transform: scale(1.1);
   }
+  
+  &.--make-it-big {
+    transform: scale(1.7);
+  }
+
+  &.--stats-london {
+    max-height: 750px;
+  }
 }
 
 .Map__cities {
   position: absolute;
   width: 100%;
-  height: 86%;
+  height: 100%;
   top: 0;
 
   .inner-wrapper {
@@ -46,5 +62,60 @@
 
   img {
     width: 100%;
+    z-index: 2;    
   }
+}
+
+.radar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  transform: translateY(-64px) translateX(-39px);
+  display: none;
+
+  &.--isVisible {
+    display: block;
+  }
+  
+  .radar__one {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    // transform: translate3d(-50%, -50%, 0);
+    background-color: rgba(255, 255, 255, 0.8);
+    animation: ping 1s alternate 0s infinite;
+  }
+  
+  .radar__two {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // transform: translate3d(-50%, -50%, 0);
+    animation: ping 1s alternate 0.5s infinite;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@keyframes ping {
+  from {
+    transform: translate3d(-50%, -50%, 0) scale(0);
+  }
+  
+  to {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+}
+
+.building-inner-wrapper {
+  z-index: 99;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }

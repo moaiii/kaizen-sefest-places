@@ -12,12 +12,12 @@ let initialState = {};
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
 
-  case "SHOW_MODAL": {
-    return state;
-  }
+  case "something": {
+      return state;
+    }
 
   default: {
-    return state;
-  }
+      return state;
+    }
   }
 };

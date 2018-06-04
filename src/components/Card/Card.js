@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // redux
 import store from '../../store';
 import {connect} from 'react-redux';
+import * as actions from './Card.action';
 
 // sub-components
 import FaAngleRight from 'react-icons/lib/fa/angle-right';
@@ -16,7 +17,7 @@ let imgSrc = {
   belfast: require('../../assets/cities/belfast.jpg'),
   birmingham: require('../../assets/cities/birmingham.jpg'),
   bradford: require('../../assets/cities/bradford.jpg'),
-  brighton: require('../../assets/cities/brighton.jpg'),
+  'brighton and hove': require('../../assets/cities/brighton.jpg'),
   bristol: require('../../assets/cities/bristol.jpg'),
   cardiff: require('../../assets/cities/cardiff.jpg'),
   coventry: require('../../assets/cities/coventry.jpg'),
@@ -28,7 +29,7 @@ let imgSrc = {
   liverpool: require('../../assets/cities/liverpool.jpg'),
   london: require('../../assets/cities/london.jpg'),
   manchester: require('../../assets/cities/manchester.jpg'),
-  newcastle: require('../../assets/cities/newcastle.jpg'),
+  'newcastle upon tyne': require('../../assets/cities/newcastle.jpg'),
   nottingham: require('../../assets/cities/nottingham.jpg'),
   plymouth: require('../../assets/cities/plymouth.jpg'),
   sheffield: require('../../assets/cities/sheffield.jpg'),
@@ -38,6 +39,12 @@ let imgSrc = {
   sunderland: require('../../assets/cities/sunderland.jpg'),
   wakefield: require('../../assets/cities/wakefield.jpg'),
   wolverhampton: require('../../assets/cities/wolverhampton.jpg'),
+  portsmouth: require('../../assets/cities/portsmouth.jpg'),
+  peterborough: require('../../assets/cities/peterborough.jpg'),
+  swansea: require('../../assets/cities/swansea.jpg'),
+  york: require('../../assets/cities/york.jpg'),
+  'stoke-on-trent': require('../../assets/cities/stoke.jpg'),
+  'kingston upon hull': require('../../assets/cities/hull.jpg'),
 }
 
 type Props = {
@@ -65,8 +72,11 @@ class Card extends Component<Props, State> {
 
     let animate = filtering ? '--animate' : '';
 
+    let incremement = window.location.href.includes('stats') 
+      ? 0 : 1;
+
     let rank = <h1 className={`Card__rank ${animate}`}>
-      {index}
+      {index + incremement}
     </h1>
     
     let cityName = <h2 className={`Card__city ${animate}`}>
@@ -80,7 +90,7 @@ class Card extends Component<Props, State> {
     let anchor = <Link className={`Card__link --${anchorPathname} ${animate}`} 
       to={{
         pathname: `/${anchorPathname}`,
-        search: `${anchorSearch}`
+        search: `${anchorSearch}&rank=${index + incremement}`
       }}>
       <p className={`Card__link-text ${animate}`}>{anchorPathname === 'overview' ? 'back' : 'stats'}</p>
       <FaAngleRight className={`Card__link-text-arrow ${animate}`}/>
@@ -89,7 +99,7 @@ class Card extends Component<Props, State> {
     // TODO: get london boroughs images
     let imageURL = city.DataType === 'london' 
       ? imgSrc['london'] : imgSrc[city.Name.toLowerCase()];
-
+   
     let image = <div className={`Card__image ${animate}`}>
       <img src={imageURL}/>
     </div>

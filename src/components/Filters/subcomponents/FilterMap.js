@@ -3,11 +3,16 @@ import React from 'react';
 //components
 import Map from '../../Map/Map';
 
-export const FilterMap = ({animate}) => {
+export const FilterMap = ({animate, location}) => {
+
+  let blurb = location === 'uk'
+    ? 'The UK\'s safest places to live'
+    : 'London\'s safest places to live'
+
   return(
     <div className={`Filters__map ${animate}`}>
-      <Map city={''} size={'small'}/>
-      <p>The UK's safest places to live</p>
+      <Map city={'none'} size={'small'}/>
+      <p>{blurb}</p>
     </div>
   )
 }

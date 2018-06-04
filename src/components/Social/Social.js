@@ -4,12 +4,14 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 // redux
-// import store from '@versus-store';
+import store from '../../store';
+import * as actions from './Social.action';
 
 // sub-components
 import FaFacebook from 'react-icons/lib/fa/facebook';
 import FaTwitter from 'react-icons/lib/fa/twitter';
 import FaInfo from 'react-icons/lib/fa/info';
+import ctmLogo from '../../assets/png/ctm-logo.png';
 
 type Props = {};
 
@@ -72,11 +74,18 @@ export class Social extends Component<Props, State> {
   }
 
   handleInfoClick = (e: SyntheticEvent<HTMLButtonElement>) => {
-    console.log('show info modal', e);
+    e.preventDefault();
+    store.dispatch(actions.showModal(true));
+  }
+
+  handleHomeClick = () => {
+    window.open(process.env.REACT_APP_CANNONICAL);
   }
 
   render() {
-    console.log('rendering', this);
+    process.env.REACT_APP_RENDER_DEBUG === 'true' 
+      ? console.log('rendering', this) : null;
+
     //const {} = this.props;
     const { animate } = this.state;
 
@@ -103,6 +112,10 @@ export class Social extends Component<Props, State> {
               <FaFacebook></FaFacebook>
             </a>
           </div>
+        </div>
+        <div className={`Social__logo`}>
+          <img src={ctmLogo} alt={`Compare the market logo`} 
+            onClick={this.handleHomeClick}/>
         </div>
       </div>
     );

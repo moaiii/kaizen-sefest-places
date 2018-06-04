@@ -33,6 +33,7 @@
 }
 
 .Intro__cta {
+  position: relative;
   width: 100px;
   height: 100px;
   background-color: $green;
@@ -41,10 +42,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: visible;
 
-  svg {
+  svg.play-button {
     fill: white;
     font-size: 3rem;
     transform: translateX(5px);
+  }
+
+  &:hover {
+    .cta__circle {
+      animation: dash 1s linear forwards;
+    }
+  }
+}
+
+.cta__circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  overflow: visible;
+
+  // &:hover {
+  //   animation: dash 1s linear forwards;
+  // }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
   }
 }

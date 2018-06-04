@@ -46,6 +46,15 @@ const svgSrcs = [
   building1, building2, building3, building4, building5, 
   building6, building7, building8, building9, building10, 
   building11, building12, building13, building14, building15, 
+  building1, building2, building3, building4, building5, 
+  building6, building7, building8, building9, building10, 
+  building11, building12, building13, building14, building15, 
+  building1, building2, building3, building4, building5, 
+  building6, building7, building8, building9, building10, 
+  building11, building12, building13, building14, building15, 
+  building1, building2, building3, building4, building5, 
+  building6, building7, building8, building9, building10, 
+  building11, building12, building13, building14, building15, 
 ];
 
 type Props = {
@@ -83,9 +92,9 @@ class Map extends Component<Props, State> {
     }, 50);
   }
 
-  shouldComponentUpdate(nextProps: Object) {
-    return nextProps.data.length !== this.props.data.length;
-  } 
+  // shouldComponentUpdate(nextProps: Object) {
+  //   return nextProps.data.length !== this.props.data.length;
+  // } 
 
   populateBuildingSvgArray = () => {
     const { size } = this.props;
@@ -95,12 +104,13 @@ class Map extends Component<Props, State> {
       .map((path, index) => {
         return <img
           src={path}
-          // svgClassName={`Map__city-svg ${animate}`}
           className={`Map__city-wrapper --${size} ${animate}`}
         />
       })
 
-    this.setState({ buildingSvgs });
+    this.setState({ buildingSvgs }, () => {
+      this.forceUpdate();
+    });
   }
   
   render() {
@@ -110,10 +120,24 @@ class Map extends Component<Props, State> {
     const { size, city, data, location } = this.props;
     const { animate, buildingSvgs } = this.state;
 
-    // render array of city svg data points
-    let cityPoints = data && buildingSvgs
-      ? data.map((location, index) => {
+    let mapSRC = location === 'uk' ? mapSrc__uk : mapSrc__london;
 
+    let classModifier = window.location.href.includes('overview') && location === 'london'
+      ? '--make-it-big'
+      : '';
+
+    let classModifierStats = window.location.href.includes('stats') && location === 'london'
+      ? '--stats-london'
+      : '';
+
+    let showRadar = window.location.href.includes('stats')
+      ? '--isVisible'
+      : '';
+
+    // render array of city svg data points
+    let cityPoints = data && buildingSvgs.length > 0
+      ? data.map((location, index) => {
+        
         let style = {
           left: location['map-position'].left,
           top: location['map-position'].top,
@@ -125,19 +149,21 @@ class Map extends Component<Props, State> {
           <div className={`city-svg__wrapper`} 
             data-name={`${location.Name}`}
             style={style} key={`${index}-city-svg`}>
-            {buildingSvgs[index]}
+            <div className="building-inner-wrapper">
+              {buildingSvgs[index]}
+            </div>
+            <div className={`radar ${showRadar}`}>
+              <div className="radar__one"></div>
+              <div className="radar__two"></div>
+            </div>
           </div>
         )
       })
       : <p>No data loaded yet</p>;
 
-      
-
-    let mapSRC = location === 'uk' ? mapSrc__uk : mapSrc__london;
-
     return (
       <div className={`Map --${location}`}>
-        <div className={`Map__land --${size}`}>
+        <div className={`Map__land --${size} ${classModifier} ${classModifierStats}`}>
           <ReactSVG
             path={mapSRC}
             svgClassName={`Map__svg ${animate}`}

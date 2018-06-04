@@ -36,15 +36,29 @@ p {
 .Stats {
   max-height: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 1rem; }
+  justify-content: left;
+  padding: 1rem;
+  height: 100vh;
+  background: linear-gradient(135deg, #D0E9EE, white);
+  overflow-x: hidden;
+  overflow-y: scroll; }
   .Stats .Map {
-    width: 100% !important; }
+    width: 32%; }
+  .Stats .Card {
+    width: 25%;
+    max-width: 270px; }
+  .Stats .Grid {
+    width: 32%;
+    min-width: 390px; }
 
 .Overview {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; }
+  justify-content: space-between;
+  height: 100vh;
+  background: linear-gradient(135deg, #D0E9EE, white);
+  overflow-x: hidden;
+  overflow-y: scroll; }
 
 .Overview__card-container {
   width: 100%;
@@ -62,7 +76,11 @@ p {
   height: 100vh;
   padding: 1rem;
   max-width: 1120px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  height: 100vh;
+  background: linear-gradient(135deg, #D0E9EE, white);
+  overflow-x: hidden;
+  overflow-y: scroll; }
   .Splash > div {
     width: 50%;
     height: 100%; }
@@ -94,6 +112,7 @@ p {
   font-size: 1rem; }
 
 .Intro__cta {
+  position: relative;
   width: 100px;
   height: 100px;
   background-color: #DDE37C;
@@ -101,25 +120,42 @@ p {
   border: none;
   display: flex;
   justify-content: center;
-  align-items: center; }
-  .Intro__cta svg {
+  align-items: center;
+  overflow: visible; }
+  .Intro__cta svg.play-button {
     fill: white;
     font-size: 3rem;
     transform: translateX(5px); }
+  .Intro__cta:hover .cta__circle {
+    animation: dash 1s linear forwards; }
+
+.cta__circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  overflow: visible; }
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0; } }
 
 .Map {
   padding: 2rem;
-  width: 100%;
-  z-index: -1; }
-  .Map.--london {
-    transform: scale(1.5); }
+  width: 100%; }
 
 .Map__svg {
-  fill: #DDE37C; }
+  height: 100%;
+  fill: #DDE37C;
+  width: 100%; }
 
 .Map__svg-wrapper {
   width: 100%;
   height: 100%; }
+  .Map__svg-wrapper > div {
+    height: 100%; }
 
 .Map__land {
   position: relative;
@@ -127,11 +163,15 @@ p {
   fill: #DDE37C; }
   .Map__land.--large {
     transform: scale(1.1); }
+  .Map__land.--make-it-big {
+    transform: scale(1.7); }
+  .Map__land.--stats-london {
+    max-height: 750px; }
 
 .Map__cities {
   position: absolute;
   width: 100%;
-  height: 86%;
+  height: 100%;
   top: 0; }
   .Map__cities .inner-wrapper {
     position: relative;
@@ -142,7 +182,48 @@ p {
   position: absolute;
   width: 25px; }
   .city-svg__wrapper img {
+    width: 100%;
+    z-index: 2; }
+
+.radar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  transform: translateY(-64px) translateX(-39px);
+  display: none; }
+  .radar.--isVisible {
+    display: block; }
+  .radar .radar__one {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    animation: ping 1s alternate 0s infinite; }
+  .radar .radar__two {
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: ping 1s alternate 0.5s infinite;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
     width: 100%; }
+
+@keyframes ping {
+  from {
+    transform: translate3d(-50%, -50%, 0) scale(0); }
+  to {
+    transform: translate3d(-50%, -50%, 0) scale(1); } }
+
+.building-inner-wrapper {
+  z-index: 99;
+  position: relative;
+  width: 100%;
+  height: 100%; }
 
 .Card {
   width: 25%;
@@ -151,15 +232,22 @@ p {
   margin: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; }
+  justify-content: space-between;
+  transition: all 0.25s ease;
+  transform: translateY(0px); }
   .Card.--large {
-    height: auto; }
+    height: auto;
+    max-height: 600px; }
   @media (max-width: 1024px) {
     .Card {
       width: 35%; } }
   @media (max-width: 768px) {
     .Card {
       width: 100%; } }
+  .Card:hover {
+    transform: translateY(-2px);
+    transition: all 0.25s ease;
+    box-shadow: -1px 12px 14px 3px rgba(0, 0, 0, 0.1); }
   .Card .card-inner-wrapper {
     position: relative;
     display: flex;
@@ -274,6 +362,18 @@ p {
 .Card:nth-of-type(30) .card-inner-wrapper {
   background: #9A4646; }
 
+.Card:nth-of-type(31) .card-inner-wrapper {
+  background: #A73A41; }
+
+.Card:nth-of-type(32) .card-inner-wrapper {
+  background: #AF2C2B; }
+
+.Card:nth-of-type(33) .card-inner-wrapper {
+  background: #B71E15; }
+
+.Card:nth-of-type(34) .card-inner-wrapper {
+  background: #BF1100; }
+
 .Card__image {
   overflow: hidden;
   transition: transform 0.5s ease;
@@ -305,6 +405,7 @@ p {
   transform: translateY(3px); }
 
 .Card__city {
+  padding: 0 1rem;
   transition: transform 0.5s ease 0.25s;
   transform: translateX(0); }
   .Card__city.--animate {
@@ -346,6 +447,7 @@ p {
   display: flex;
   align-items: center; }
   .Filters__map p {
+    font-size: 20px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -361,7 +463,8 @@ p {
   .Filters__toggle p {
     font-family: 'lemonmilk', serif;
     color: #677174;
-    text-align: center; }
+    text-align: center;
+    font-size: 12px; }
 
 .switch {
   width: 50px;
@@ -409,6 +512,10 @@ p {
     border: 2px solid rgba(0, 0, 0, 0.5); }
   .filters__button.--selected {
     border: 2px solid #677174; }
+  .filters__button p {
+    font-family: 'lemonmilk', serif;
+    color: #677174;
+    font-size: 12px; }
 
 .filters__options-container {
   display: flex;
@@ -443,13 +550,43 @@ p {
     opacity: 0.7;
     list-style: none;
     font-size: 10px;
-    font-family: 'lemonmilk', serif;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
     color: #677174;
     cursor: pointer; }
     .filters__subcategories li:hover {
       opacity: 1; }
     .filters__subcategories li.--selected {
       opacity: 1; }
+
+.Social__icons {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row-reverse; }
+
+.Social__logo {
+  width: 100%; }
+  .Social__logo img {
+    width: 100%;
+    height: 100%; }
+
+.Social__container {
+  position: relative;
+  width: 80%;
+  margin: 0 auto; }
+
+.social__link {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .social__link svg {
+    fill: white; }
 
 .Grid {
   padding: 1rem; }
@@ -481,3 +618,68 @@ p {
       font-size: 0.8rem;
       text-align: center;
       line-height: 1; }
+
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #DDE37C;
+  transition: transform 1s ease;
+  transform: translateX(-200%) skew(45deg); }
+  .Modal.--animate {
+    transition: transform 1s ease;
+    transform: translateX(0) skew(0); }
+
+.Modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease 0s; }
+  .Modal__content h1 {
+    color: white;
+    font-family: 'lemonmilk', serif; }
+  .Modal__content.--animate {
+    opacity: 1;
+    transition: opacity 0.5s ease 1s; }
+
+.modal__content {
+  margin-top: 2rem; }
+  .modal__content p {
+    color: #677174;
+    text-align: center;
+    line-height: 1.6; }
+  .modal__content h2 {
+    margin-top: 2rem;
+    font-family: 'lemonmilk', serif;
+    color: white;
+    text-align: center; }
+  .modal__content li {
+    list-style: none;
+    text-align: center; }
+    .modal__content li a {
+      font-family: 'Roboto', sans-serif;
+      text-decoration: none;
+      color: #677174;
+      text-align: center;
+      line-height: 1.6; }
+
+.modal__close-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem; }
+  .modal__close-container:hover {
+    cursor: pointer; }
+  .modal__close-container svg {
+    opacity: 0;
+    transform: rotateZ(0deg);
+    transition: all 0.5s ease 2s;
+    fill: white;
+    font-size: 3rem;
+    transform-origin: 50% 50%; }
+  .modal__close-container.--animate svg {
+    opacity: 1;
+    transform: rotateZ(180deg);
+    transition: all 0.5s ease 2s; }

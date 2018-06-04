@@ -50,7 +50,7 @@ export class Grid extends Component<Props, State> {
     </div>
 
     return (
-      <div className={`Grid`}>
+      <div className={`Grid ${this.state.animate}`}>
         {grid}
       </div>
     );

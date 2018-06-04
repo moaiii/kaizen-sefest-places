@@ -48,7 +48,10 @@ export default class Intro extends Component<Props, State> {
 
     let ctaButton = <Link to={{pathname: '/overview',}}>
       <button className={`Intro__cta ${animate}`}>
-        <FaPlay />
+        <svg className={`cta__circle`} height="100" width="100">
+          <circle cx="50" cy="50" r="50" stroke="white" strokeWidth="6" fill="none" />
+        </svg>
+        <FaPlay className={`play-button`}/>
       </button>
     </Link>
 

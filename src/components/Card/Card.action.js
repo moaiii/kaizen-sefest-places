@@ -1,9 +1,12 @@
 // @flow
-type FooAction = { type: "FOO", foo: number };
+type FooAction = { 
+  type: "SET_SELECTED_CITY", 
+  payload: Object 
+};
 
-type Action =
-  | FooAction;
-
-export const foo = (value: number): FooAction => {
-  return { type: "FOO", foo: value };
+export const setSelectedCity = (name: string, rank: number): FooAction => {
+  return { 
+    type: "SET_SELECTED_CITY", 
+    payload: { name, rank } 
+  };
 }

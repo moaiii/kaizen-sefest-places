@@ -57,7 +57,11 @@ $card-colors: (
   #A24A60,
   #9F4857,
   #9C474F,
-  #9A4646
+  #9A4646,
+  #A73A41,
+  #AF2C2B,
+  #B71E15,
+  #BF1100
 );
 
 @mixin laptop {
@@ -124,3 +128,7 @@ p {
 @import "../components/Social/Social.scss";
 
 @import "../components/Grid/Grid.scss";
+
+@import "../components/Modal/Modal.scss";
+
+@import "../components/mehul/mehul.scss";

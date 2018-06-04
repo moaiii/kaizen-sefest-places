@@ -1,9 +1,15 @@
 // @flow
-type FooAction = { type: "FOO", foo: number };
+type SocialActions = { 
+  type: string, 
+  payload: Object 
+};
 
 type Action =
-  | FooAction;
+  | SocialActions;
 
-export const foo = (value: number): FooAction => {
-  return { type: "FOO", foo: value };
+export const showModal = (value: boolean): SocialActions => {
+  return { 
+    type: "SHOW_MODAL",
+    payload: { payload: value }
+  };
 }

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // redux
 import {connect} from 'react-redux';
 import store from '../../store';
+import * as IntroActions from '../../components/Intro/Intro.action';
 
 // sub-components
 import Card from '../../components/Card/Card';
@@ -27,6 +28,10 @@ export class Stats extends Component<Props, State> {
     this.state = {
       data: {}
     };
+  }
+
+  componentWillMount() {
+    store.dispatch(IntroActions.fetchData());
   }
 
   componentDidMount() {
