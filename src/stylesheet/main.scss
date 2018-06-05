@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 #root {
   overflow: hidden;
@@ -103,7 +103,7 @@ $card-colors: (
 
 @mixin roboto {
   font-weight: 300;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;;
 }
 
 body {
@@ -126,9 +126,5 @@ p {
 @import "../components/Card/Card.scss";
 @import "../components/Filters/Filters.scss";
 @import "../components/Social/Social.scss";
-
 @import "../components/Grid/Grid.scss";
-
 @import "../components/Modal/Modal.scss";
-
-@import "../components/mehul/mehul.scss";

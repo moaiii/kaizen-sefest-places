@@ -4,7 +4,8 @@ type State = {
   +subCategory: string,
   +location: string,
   +filtered: boolean,
-  +filteredData: Array<Object>
+  +filteredData: Array<Object>,
+  +mobileDrawerVisibility: boolean
 };
 
 type Action = {
@@ -18,7 +19,8 @@ let initialState = {
   location: 'uk',
   filtering: false,
   filtered: false,
-  filteredData: []
+  filteredData: [],
+  mobileDrawerVisibility: false
 };
 
 export default (state: State = initialState, action: Action): State => {
@@ -47,6 +49,12 @@ export default (state: State = initialState, action: Action): State => {
       filtering: false,
       filtered: true,
       filteredData: action.payload.data
+    })
+  }
+
+  case "SET_MOBILE_DRAWER_VISIBILITY": {
+    return Object.assign({}, state, {
+      mobileDrawerVisibility: action.payload.isVisible
     })
   }
 

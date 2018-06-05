@@ -16,11 +16,16 @@ export const getFilteredList = (store: Function, next: Function, action: Functio
 
   // get list 
   let data = store.getState().IntroReducer.data
-    .filter(dataPoint => dataPoint.DataType === location);
+    .filter(dataPoint => dataPoint.DataType === location)
+    .map(dp => {
+      
+    });
   
   // organise 
   let sort_by = subCategory === ' - index' ? category : subCategory;
   let data_sorted = _.sortBy(data, sort_by);
+
+  let results = data_sorted.map(x => console.log(x.Name, sort_by, x[sort_by]));
 
   // give time for the animation
   setTimeout(() => {
@@ -28,7 +33,6 @@ export const getFilteredList = (store: Function, next: Function, action: Functio
     store.dispatch(actions.filterList__end(data_sorted));
     next(action);
   }, 500);
-
 }
 
 function capitalize(string) {

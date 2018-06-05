@@ -17,11 +17,12 @@ import {FilterOptions} from './subcomponents/FilterOptions';
 import {FilterMap} from './subcomponents/FilterMap';
 
 // assets
-// ......
+import FaClose from 'react-icons/lib/fa/close';
 
 // types
 type Props = {
-  location: 'string'
+  location: 'string',
+  mobileDrawerVisibility: boolean
 };
 
 type State = {
@@ -53,7 +54,10 @@ class Filters extends Component<Props, State> {
     this.setState({
       togglePosition: this.state.togglePosition === 'uk' 
         ? 'london' : 'uk' // simple toggle
-    }, () => this.setSelection('location', this.state.togglePosition));
+    }, () => {
+      this.setMobileDrawerVisibility(false);
+      this.setSelection('location', this.state.togglePosition)
+    });
   }
 
   handleCategorySelect = (index: number) => {
@@ -86,19 +90,29 @@ class Filters extends Component<Props, State> {
             ? Object.assign({}, a, { sub })
             : a
           })
-      }, () => this.setSelection('subcategory', categories[i].sub[j].name));
+      }, () => {
+        this.setMobileDrawerVisibility(false);
+        this.setSelection('subcategory', categories[i].sub[j].name)
+      });
   }
 
   setSelection = (key: string, value: string) => {
     store.dispatch(actions.setSelection(key, value));
+  }
+
+  setMobileDrawerVisibility = (isVisible: boolean) => {
+    store.dispatch(actions.setMobileDrawerVisibility(isVisible))
   }
   
   render() {
     process.env.REACT_APP_RENDER_DEBUG === 'true' 
       ? console.log('rendering', this) : null;
     
-    const { location } = this.props;
+    const { location, mobileDrawerVisibility } = this.props;
     const { animate, togglePosition, categories } = this.state;
+
+    let mobileToggleClass = mobileDrawerVisibility 
+      ? '--mobile-drawer-open' : '';
 
     let map = <FilterMap 
       location={location}
@@ -117,8 +131,13 @@ class Filters extends Component<Props, State> {
 
     let social = <Social />
 
+    let mobileClose = <div className={`Filters__mobile-close-container`}>
+      <FaClose onClick={() => this.setMobileDrawerVisibility(false)}/>
+    </div>
+
     return (
-      <div className="Filters">
+      <div className={`Filters ${mobileToggleClass}`}>
+        {mobileClose}
         {map}
         {toggle}
         {filters}
@@ -130,7 +149,8 @@ class Filters extends Component<Props, State> {
 
 const storeToProps = (store) => {
   return {
-    location: store.FiltersReducer.location
+    location: store.FiltersReducer.location,
+    mobileDrawerVisibility: store.FiltersReducer.mobileDrawerVisibility
   }
 }
 

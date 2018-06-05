@@ -4,8 +4,6 @@
   padding: 1rem;
   max-width: 1120px;
   margin: 0 auto;
-  
-  height: 100vh;
   background: linear-gradient(135deg, #D0E9EE, white);
   overflow-x: hidden;
   overflow-y: scroll;
@@ -13,5 +11,18 @@
   > div {
     width: 50%;
     height: 100%;
+  }
+
+  @include tablet {
+    flex-direction: column;
+    position: relative;
+    max-height: 100vh;
+    overflow: hidden;
+
+    > div {
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+    }
   }
 }

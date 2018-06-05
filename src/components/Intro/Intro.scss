@@ -5,22 +5,38 @@
   align-items: center;
   padding: 4rem 2rem;
   justify-content: space-evenly;
+
+  @include tablet {
+    padding: 1rem;
+    z-index: 1;
+  }
 }
 
 .Intro__title {
   color: white;
   text-transform: uppercase;
-  font-size: 80px;
+  font-size: 65px;
   text-align: center;
   line-height: 0.9;
   @include font-lemonmilk;
 
+  @include tablet {
+    font-size: 40px;
+  }
+
   span {
     color: $grey;
+    font-size: 85px;
+    display: flex;
 
     &:after {
       content: "";
       display: block;
+    }
+
+    @include tablet {
+      font-size: 60px;
+      display: flex;
     }
   }
 }
@@ -29,7 +45,14 @@
   color: $grey;
   text-align: center;
   font-size: 1rem;
+  line-height: 1.6;
+  max-width: 400px;
   // @include font-lemonmilk-light;
+
+  @include tablet {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
 }
 
 .Intro__cta {
@@ -54,6 +77,11 @@
     .cta__circle {
       animation: dash 1s linear forwards;
     }
+  }
+
+  @include tablet {
+    // width: 85px;
+    // height: 85px;
   }
 }
 

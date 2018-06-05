@@ -1,4 +1,3 @@
-import mehulReducer from "./components/mehul/mehul.reducer.js"
 import ModalReducer from "./components/Modal/Modal.reducer.js"
 import GridReducer from "./components/Grid/Grid.reducer.js"
 import SocialReducer from "./components/Social/Social.reducer.js"

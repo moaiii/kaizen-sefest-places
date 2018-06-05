@@ -50,7 +50,7 @@ export class Splash extends Component<Props, State> {
     return (
       <div className={`Splash ${animate}`}>
         <Intro />
-        <Map size={`large`} city={'all'}/>
+        <Map size={`large`} city={'all'} mod={'splash'}/>
       </div>
     );
   }

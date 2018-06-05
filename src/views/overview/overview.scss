@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   height: 100vh;
   background: linear-gradient(135deg, #D0E9EE, white);
   overflow-x: hidden;
@@ -15,9 +14,62 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
+  @include tablet {
+    max-width: 100%;    
+    transform: translateY(50px);
+  }
 }
 
 .Overview__filters-container {
   max-width: 300px;
   width: 30%;
+
+  @include tablet {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    z-index: 10;
+    transition: transform 0.5s ease;
+    transform: translateX(100%);
+    z-index: 10;
+
+    &.--mobile-drawer-open {
+      transition: transform 0.5s ease;
+      transform: translateX(0%);
+    }
+  }
+}
+
+.mobile-header {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    position: fixed;
+    z-index: 9;
+    background: white;
+    height: 50px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+    top: 0;
+
+    svg {
+      color: $grey;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    p {
+      @include font-lemonmilk;
+      font-size: 0.9rem;
+      color: $grey;
+    }
+  }
 }

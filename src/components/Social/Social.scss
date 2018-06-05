@@ -17,9 +17,12 @@
 
 .Social__container {
   position: relative;
-  // bottom: 45px;
   width: 80%;
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    transform: translateY(-5px);  
+  }
 }
 
 .social__link {

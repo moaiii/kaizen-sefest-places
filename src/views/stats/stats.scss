@@ -3,23 +3,116 @@
   display: flex;
   justify-content: left;
   padding: 1rem;
-
   height: 100vh;
   background: linear-gradient(135deg, #D0E9EE, white);
   overflow-x: hidden;
   overflow-y: scroll;
 
+  @media (min-width: 768px) {
+    align-items: center;
+  }
+
+  @include tablet {
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 70px;
+  }
+
   .Map {
     width: 32%;
+
+    @include tablet {
+      width: 60%;
+      margin: 0 auto;
+      transform: none;
+      opacity: 1;
+
+      .Map__land {
+        .Map__cities {
+          display: block;
+          height: 100%;
+          transform: translateY(-10px);
+        }
+      }
+    }
+
+    @include mobile {
+      width: 70%;
+    }
+  }
+
+  @for $i from 1 through length($card-colors) {
+    .--color-#{$i} {
+      background: nth($card-colors, $i) !important;
+    }
   }
   
   .Card {
     width: 25%;
     max-width: 270px;
+
+    @include tablet {
+      width: 100%;
+      min-height: 400px;
+      margin: 0 auto;
+      max-width: 100%;
+      box-shadow: -1px 12px 14px 3px rgba(0,0,0,0.1);
+
+      .card-inner-wrapper {
+        height: 400px;
+      }
+    }
+
+
   }
   
   .Grid {
     width: 32%;
     min-width: 390px;
+
+    @include tablet {
+      margin: 1rem 0;
+      padding: 0;
+      width: 100%;
+      min-width: 100%;
+    }
   }
+}
+
+.Stats__mobile-header {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    position: fixed;
+    height: 75px;
+    border-bottom: 4px solid white;
+    background-color: white;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    align-items: center;
+    padding: 1rem;
+
+    p {
+      @include font-lemonmilk;
+      color: white;
+      font-size: 22px;
+      margin-right: 1rem;
+      line-height: 0.9;
+
+      &:first-of-type {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+.stats-mobile-header-arrow {
+  font-size: 2rem;
+  fill: white;
+  margin-right: 2rem;
 }

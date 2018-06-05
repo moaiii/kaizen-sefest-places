@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 import store from '../../store';
 
 // sub-components
+import auxData from './subcomponents/aux';
+
 import mapSrc__uk from '../../assets/svg/UK-outline.svg';
 import mapSrc__london from '../../assets/svg/LondonMap.svg';
 import bud1 from '../../assets/png/bud1.png';
@@ -57,16 +59,29 @@ const svgSrcs = [
   building11, building12, building13, building14, building15, 
 ];
 
+const cloudSrcs = [cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud];
+
+const auxSrcs = [
+  shop1,shop2,shop3,shop4,swimmingpool,tree,tree,tree,
+  shop1,shop2,shop3,shop4,swimmingpool,tree,tree,tree,
+  tree,tree,tree,shop4,swimmingpool,tree,tree,tree,
+  tree,tree,tree,swimmingpool,tree,tree,tree,
+  tree,tree,tree,tree,tree,tree,
+];
+
 type Props = {
   size: string,
   city: Array<string> | string,
   data: Array<Object>,
-  location: string
+  location: string,
+  mod: ?string
 };
 
 type State = {
   animate: string,
-  buildingSvgs: Array<Object>
+  buildingSvgs: Array<Object>,
+  cloudSvgs: Array<Object>,
+  auxSvgs: Array<Object>
 };
 
 class Map extends Component<Props, State> {
@@ -80,7 +95,9 @@ class Map extends Component<Props, State> {
 
     this.state = {
       animate: '',
-      buildingSvgs: []
+      buildingSvgs: [],
+      cloudSvgs: [],
+      auxSvgs: []
     };
   }
 
@@ -88,13 +105,10 @@ class Map extends Component<Props, State> {
     setTimeout(() => {
       this.setState({animate: '--animate'}, () => {
         this.populateBuildingSvgArray();
+        this.populateAuxSvgArray();
       })
     }, 50);
   }
-
-  // shouldComponentUpdate(nextProps: Object) {
-  //   return nextProps.data.length !== this.props.data.length;
-  // } 
 
   populateBuildingSvgArray = () => {
     const { size } = this.props;
@@ -108,61 +122,117 @@ class Map extends Component<Props, State> {
         />
       })
 
-    this.setState({ buildingSvgs }, () => {
-      this.forceUpdate();
-    });
+    this.setState({ buildingSvgs }, () => this.forceUpdate());
+  }
+
+  populateCloudSvgArray = () => {
+    const { size } = this.props;
+    const { animate } = this.state;
+
+    let cloudSvgs: Array<any> = cloudSrcs
+      .map((path, index) => {
+        return <img
+          src={path}
+          className={`Map__cloud --${size} ${animate}`}
+        />
+      })
+
+    this.setState({ cloudSvgs }, () => this.forceUpdate());
+  }
+
+  populateAuxSvgArray = () => {
+    const { size } = this.props;
+    const { animate } = this.state;
+
+    let auxSvgs: Array<any> = auxSrcs
+      .map((path, index) => {
+        return <img
+          src={path}
+          className={`Map__aux-buildings --${size} ${animate}`}/>
+      })
+
+    this.setState({ auxSvgs }, () => {
+      // console.log(this.state);
+      this.forceUpdate()});
   }
   
   render() {
     process.env.REACT_APP_RENDER_DEBUG === 'true' 
       ? console.log('rendering', this) : null;
     
-    const { size, city, data, location } = this.props;
-    const { animate, buildingSvgs } = this.state;
+    const { size, city, data, location, mod } = this.props;
+    const { animate, buildingSvgs, auxSvgs, cloudSvgs } = this.state;
 
     let mapSRC = location === 'uk' ? mapSrc__uk : mapSrc__london;
 
     let classModifier = window.location.href.includes('overview') && location === 'london'
-      ? '--make-it-big'
-      : '';
+      ? '--make-it-big' : '';
 
     let classModifierStats = window.location.href.includes('stats') && location === 'london'
-      ? '--stats-london'
-      : '';
+      ? '--stats-london' : '';
 
     let showRadar = window.location.href.includes('stats')
-      ? '--isVisible'
-      : '';
+      ? '--isVisible' : '';
 
     // render array of city svg data points
     let cityPoints = data && buildingSvgs.length > 0
-      ? data.map((location, index) => {
+      ? data
+        .filter((x, index) => {
+          if(mod === 'splash') {
+            return x.DataType === 'uk';
+          } else {
+            return x;
+          }
+        })
+        .map((location, index) => {
         
+          let style = {
+            left: location['map-position'].left,
+            top: location['map-position'].top,
+            display: city === 'all' || city === location.Name.toLowerCase() 
+              ? 'block' : 'none'
+          }
+
+          return(
+            <div className={`city-svg__wrapper`} 
+              data-name={`${location.Name}`}
+              style={style} key={`${index}-city-svg`}>
+              <div className="building-inner-wrapper">
+                {buildingSvgs[index]}
+              </div>
+              <div className={`radar ${showRadar}`}>
+                <div className="radar__one"></div>
+                <div className="radar__two"></div>
+              </div>
+            </div>
+          )
+        })
+      : <p>No data loaded yet</p>;
+
+    let cloudPoints = null;
+
+    let auxPoints = auxData
+      .map((dp, i) => {
         let style = {
-          left: location['map-position'].left,
-          top: location['map-position'].top,
-          display: city === 'all' || city === location.Name.toLowerCase() 
-            ? 'block' : 'none'
+          left: dp.left,
+          top: dp.top,
+          display: mod === 'splash' ? 'block' : 'none'
         }
 
         return(
           <div className={`city-svg__wrapper`} 
-            data-name={`${location.Name}`}
-            style={style} key={`${index}-city-svg`}>
+            style={style} key={`${i}-aux-svg`}>
             <div className="building-inner-wrapper">
-              {buildingSvgs[index]}
-            </div>
-            <div className={`radar ${showRadar}`}>
-              <div className="radar__one"></div>
-              <div className="radar__two"></div>
+              {auxSvgs[i]}
             </div>
           </div>
         )
-      })
-      : <p>No data loaded yet</p>;
+      });
+
+      // console.log(auxData, auxPoints)
 
     return (
-      <div className={`Map --${location}`}>
+      <div className={`Map --${location} --${mod || ''}`}>
         <div className={`Map__land --${size} ${classModifier} ${classModifierStats}`}>
           <ReactSVG
             path={mapSRC}
@@ -172,6 +242,11 @@ class Map extends Component<Props, State> {
           <div className="Map__cities">
             <div className="inner-wrapper">
               {cityPoints}
+            </div>
+          </div>
+          <div className="Map__aux">
+            <div className="inner-wrapper">
+              {auxPoints}
             </div>
           </div>
         </div>

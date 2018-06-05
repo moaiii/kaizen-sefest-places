@@ -6,7 +6,8 @@
   height: 100%;
   background-color: $green;
   transition: transform 1s ease;
-  transform: translateX(-200%) skew(45deg);
+  transform: translateX(-300%) skew(45deg);
+  z-index: 9999;
   
   &.--animate {
     transition: transform 1s ease;
@@ -20,6 +21,7 @@
   align-items: center;
   opacity: 0;
   transition: opacity 0.5s ease 0s;
+  padding: 1rem;
 
   h1 {
     color: white;
@@ -76,7 +78,7 @@
     transform: rotateZ(0deg);
     transition: all 0.5s ease 2s;
     fill: white;
-    font-size: 3rem;
+    font-size: 2rem;
     transform-origin: 50% 50%;
   }
 

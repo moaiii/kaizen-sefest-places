@@ -96,9 +96,7 @@ class Card extends Component<Props, State> {
       <FaAngleRight className={`Card__link-text-arrow ${animate}`}/>
     </Link>
 
-    // TODO: get london boroughs images
-    let imageURL = city.DataType === 'london' 
-      ? imgSrc['london'] : imgSrc[city.Name.toLowerCase()];
+    let imageURL = imgSrc[city.Name.toLowerCase()];
    
     let image = <div className={`Card__image ${animate}`}>
       <img src={imageURL}/>
@@ -108,7 +106,7 @@ class Card extends Component<Props, State> {
 
     return (
       <div className={`Card --${size}`}>
-        <div className="card-inner-wrapper">
+        <div className={`card-inner-wrapper --color-${index}`}>
           {rank}
           {cityName}
           {anchor}

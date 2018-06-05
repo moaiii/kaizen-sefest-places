@@ -23,7 +23,7 @@ echo '\n@import "../components/'$1'/'$1'.scss";' >> $stylesmain
 
 # boiler plate for test files
 echo 'import reducer from "./'$1'.reducer";' >> $test
-echo 'import action from "./'$1'.action";' >> $test
+echo 'import * as actions from "./'$1'.action";' >> $test
 echo '\ndescribe("'$1'", () => {' >> $test
 echo '  it("", () => {' >> $test
 echo '    expect();' >> $test

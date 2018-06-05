@@ -30,6 +30,7 @@
     "flow": "flow-typed install; flow",
     "flow:watch": "flow-watch"
   },
+  "homepage": "http://dev.kaizen.co.uk/msm/safest-places",
   "devDependencies": {
     "flow-bin": "^0.72.0",
     "flow-watch": "^1.1.3"

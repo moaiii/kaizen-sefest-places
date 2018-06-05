@@ -13,12 +13,16 @@ import Card from '../../components/Card/Card';
 import Map from '../../components/Map/Map';
 import {Grid} from '../../components/Grid/Grid';
 
+// assets
+import FaAngleLeft from 'react-icons/lib/fa/angle-left';
+
 type Props = {
   data: Object
 };
 
 type State = {
-  data: Object
+  data: Object,
+  rank: string
 };
 
 export class Stats extends Component<Props, State> {
@@ -26,16 +30,20 @@ export class Stats extends Component<Props, State> {
     super();
 
     this.state = {
-      data: {}
+      data: {},
+      rank: ''
     };
   }
 
   componentWillMount() {
+    window.scroll(0, 0);
     store.dispatch(IntroActions.fetchData());
   }
 
   componentDidMount() {
-    let urlCity = new URL(window.location.href).hash.split('=')[1];
+    window.scroll(0, 0);
+    let urlCity = new URL(window.location.href).hash.split('=')[1].replace(/&rank/g, '');
+    let rank = new URL(window.location.href).hash.split('&rank=')[1];
     
     let data = store
       .getState().IntroReducer.data
@@ -43,21 +51,30 @@ export class Stats extends Component<Props, State> {
         return city.Name.toLowerCase() === decodeURI(urlCity).toLowerCase()
       })[0];
 
-    this.setState({ data }, () => console.log(data))
+    this.setState({ data, rank });
   }
 
   render() {
     process.env.REACT_APP_RENDER_DEBUG === 'true' 
       ? console.log('rendering', this) : null;
     
-    const { data } = this.state;
+    const { data, rank } = this.state;
+
+    let statsHeader = <div className={`Stats__mobile-header --color-${rank}`}>
+      <Link to={{pathname: '/overview'}}>
+        <FaAngleLeft className={`stats-mobile-header-arrow`}/>
+      </Link>
+      <p>{rank}</p>
+      <p>{data.Name}</p>
+    </div>
 
     if(typeof data.Name !== 'undefined') {
       return (
         <div className="Stats">
-          <Card city={data} index={1} size={'large'}/>
+          {statsHeader}
+          <Card city={data} index={parseInt(rank, 10)} size={'large'}/>
           <Grid data={data}/>
-          <Map city={data.Name.toLowerCase()} size={`large`}/>
+          <Map city={data.Name.toLowerCase()} size={`large`} mod={''}/>
         </div>
       );
     } else {

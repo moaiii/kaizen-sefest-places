@@ -5,6 +5,16 @@ import ReactSVG from 'react-svg';
 
 // assets
 import hospital from '../../../assets/png/hospital.png';
+import shop3 from '../../../assets/png/shop3.png';
+import shop1 from '../../../assets/png/shop1.png';
+import shop2 from '../../../assets/png/shop2.png';
+
+const icons = [
+  shop2,
+  shop1,
+  hospital,
+  shop3,
+]
 
 // component
 export const FilterOptions = ({animate, categories, handleCategorySelect, handleSubCategorySelect}) => {
@@ -17,8 +27,8 @@ export const FilterOptions = ({animate, categories, handleCategorySelect, handle
           let listSelected = category.selected ? '--selected' : '';
           return(
             <div className={`filters__option`} key={`${i}-filters-option`}>
-              <img 
-                src={hospital}
+              <img
+                src={icons[i]}
                 className={`filters__option-wrapper ${animate}`}/>
               
               <button className={`filters__button`} 

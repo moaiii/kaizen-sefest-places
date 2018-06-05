@@ -11,7 +11,7 @@ export const FilterMap = ({animate, location}) => {
 
   return(
     <div className={`Filters__map ${animate}`}>
-      <Map city={'none'} size={'small'}/>
+      <Map city={'none'} size={'small'} mod={''}/>
       <p>{blurb}</p>
     </div>
   )

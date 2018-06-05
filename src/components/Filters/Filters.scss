@@ -2,6 +2,25 @@
   background-color: white;
   position: fixed;
   height: 100vh;
+
+  @include tablet {
+    padding: 1rem;
+    transition: transform 0.5s ease;
+    transform: translateX(100%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    &.--mobile-drawer-open {
+      transition: transform 0.5s ease;
+      transform: translateX(0%);
+
+      @media (min-width: 550px) {
+        padding: 1rem 4rem;
+      }
+    }
+  }
 }
 
 .Filters__map {
@@ -21,6 +40,10 @@
     color: $grey;
     text-align: center;
   }
+
+  @include tablet {
+    display: none;
+  }
 }
 
 .Filters__toggle {
@@ -28,12 +51,17 @@
   align-items: center;
   cursor: pointer;
   justify-content: space-evenly;
+  // max-width: 400px;
 
   p {
     @include font-lemonmilk;
     color: $grey;
     text-align: center;
     font-size: 12px;
+  }
+
+  @include tablet {
+    margin-bottom: 1rem;
   }
 }
 
@@ -75,6 +103,18 @@
     @include font-lemonmilk;
     color: $grey;
     font-size: 12px;
+  }
+
+  @include tablet {
+    padding: 2rem 2rem 0rem 2rem;
+
+    > p {
+      @include roboto;
+    }
+  }
+
+  @include mobile {
+    padding: 2rem 0 0 0;
   }
 }
 
@@ -130,12 +170,25 @@
       transform: translateY(-5px) translateX(8px);
     }
   }
+
+  @include tablet {
+    &:nth-of-type(3) {
+      padding: 0rem 1rem 1rem 1rem;
+    }
+    &:nth-of-type(4) {
+      padding: 0rem 1rem 1rem 1rem;
+    }
+  }
 }
 
 .filters__option-wrapper  {
   transition: transform 0.5s ease;
-  width: 75%;
+  height: 65px;
   margin: 0 auto;
+
+  @include tablet {
+    height: 50px;
+  }
 }
 
 .filters__subcategories {
@@ -146,13 +199,14 @@
   }
 
   li {
-    margin: 3px 0;
+    margin: 5px 0;
     opacity: 0.7;
     list-style: none;
     font-size: 10px;
     @include roboto;
     color: $grey;
     cursor: pointer;
+    line-height: 1.1;
     
     &:hover {
       opacity: 1;
@@ -160,6 +214,25 @@
 
     &.--selected {
       opacity: 1;
+    }
+  }
+}
+
+.Filters__mobile-close-container {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 0.5rem;
+  
+    svg {
+      font-size: 1rem;
+      color: $grey;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

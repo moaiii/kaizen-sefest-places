@@ -14,7 +14,7 @@ type FilterListAction = {
 
 export const setSelection = (key: string, value: string): SetSelectionAction => {
   return { 
-    type: "SET_SELECTION", 
+    type: "SET_SELECTION",
     payload: { key, value } 
   };
 }
@@ -30,5 +30,12 @@ export const filterList__end = (data: Array<Object>): FilterListAction => {
   return { 
     type: "FILTER_LIST__END", 
     payload: { data } 
+  };
+}
+
+export const setMobileDrawerVisibility = (isVisible: boolean): FilterListAction => {
+  return { 
+    type: "SET_MOBILE_DRAWER_VISIBILITY", 
+    payload: { isVisible } 
   };
 }

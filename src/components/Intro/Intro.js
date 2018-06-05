@@ -40,13 +40,13 @@ export default class Intro extends Component<Props, State> {
     </p>
 
     let openingParagraph = <p className={`Intro__paragraph ${animate}`}>
-      For most, being home means being safe - but that means you\'ve got to think ahead when buying property. 
+      For most, being home means being safe - but that means you've got to think ahead when buying property. 
       Bad weather, crime, and fast medical response time are all something you want to watch out for when 
       picking where you want to live. But with this guide, the work is already done for you - have a look to 
       see the safest places to find a home.
     </p>
 
-    let ctaButton = <Link to={{pathname: '/overview',}}>
+    let ctaButton = <Link to={{pathname: '/overview'}}>
       <button className={`Intro__cta ${animate}`}>
         <svg className={`cta__circle`} height="100" width="100">
           <circle cx="50" cy="50" r="50" stroke="white" strokeWidth="6" fill="none" />
