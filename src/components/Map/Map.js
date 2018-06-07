@@ -9,7 +9,7 @@ import store from '../../store';
 
 // sub-components
 import auxData from './subcomponents/aux';
-
+import cloudData from './subcomponents/cloud';
 import mapSrc__uk from '../../assets/svg/UK-outline.svg';
 import mapSrc__london from '../../assets/svg/LondonMap.svg';
 import bud1 from '../../assets/png/bud1.png';
@@ -37,6 +37,7 @@ import shop3 from '../../assets/png/shop3.png';
 import shop4 from '../../assets/png/shop4.png';
 import swimmingpool from '../../assets/png/swimmingpool.png';
 import tree from '../../assets/png/tree.png';
+import splashMap from '../../assets/png/uk-map-splash.png';
 
 const svgSrcs = [
   building1, building2, building3, building4, building5, 
@@ -59,7 +60,8 @@ const svgSrcs = [
   building11, building12, building13, building14, building15, 
 ];
 
-const cloudSrcs = [cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud,cloud];
+const cloudSrcs = [cloud,cloud,cloud,cloud,cloud,cloud,
+  cloud,cloud,cloud,cloud,cloud,cloud];
 
 const auxSrcs = [
   shop1,shop2,shop3,shop4,swimmingpool,tree,tree,tree,
@@ -106,6 +108,7 @@ class Map extends Component<Props, State> {
       this.setState({animate: '--animate'}, () => {
         this.populateBuildingSvgArray();
         this.populateAuxSvgArray();
+        this.populateCloudSvgArray();
       })
     }, 50);
   }
@@ -155,6 +158,22 @@ class Map extends Component<Props, State> {
       // console.log(this.state);
       this.forceUpdate()});
   }
+
+  populateCloudSvgArray = () => {
+    const { size } = this.props;
+    const { animate } = this.state;
+
+    let cloudSvgs: Array<any> = cloudSrcs
+      .map((path, index) => {
+        return <img
+          src={path}
+          className={`Map__cloud --${size} ${animate}`}/>
+      })
+
+    this.setState({ cloudSvgs }, () => {
+      // console.log(this.state);
+      this.forceUpdate()});
+  }
   
   render() {
     process.env.REACT_APP_RENDER_DEBUG === 'true' 
@@ -179,7 +198,7 @@ class Map extends Component<Props, State> {
       ? data
         .filter((x, index) => {
           if(mod === 'splash') {
-            return x.DataType === 'uk';
+            return x.datatype === 'uk';
           } else {
             return x;
           }
@@ -189,13 +208,13 @@ class Map extends Component<Props, State> {
           let style = {
             left: location['map-position'].left,
             top: location['map-position'].top,
-            display: city === 'all' || city === location.Name.toLowerCase() 
+            display: city === 'all' || city === location.name.toLowerCase() 
               ? 'block' : 'none'
           }
 
           return(
             <div className={`city-svg__wrapper`} 
-              data-name={`${location.Name}`}
+              data-name={`${location.name}`}
               style={style} key={`${index}-city-svg`}>
               <div className="building-inner-wrapper">
                 {buildingSvgs[index]}
@@ -208,8 +227,6 @@ class Map extends Component<Props, State> {
           )
         })
       : <p>No data loaded yet</p>;
-
-    let cloudPoints = null;
 
     let auxPoints = auxData
       .map((dp, i) => {
@@ -228,28 +245,60 @@ class Map extends Component<Props, State> {
           </div>
         )
       });
+    
+    let cloudPoints = cloudData
+      .map((dp, i) => {
+        let style = {
+          left: dp.left,
+          top: dp.top,
+          display: mod === 'splash' ? 'block' : 'none'
+        }
 
-      // console.log(auxData, auxPoints)
+        return(
+          <div className={`city-svg__wrapper --cloud`} 
+            style={style} key={`${i}-cloud-svg`}>
+            <div className="building-inner-wrapper">
+              {cloudSvgs[i]}
+            </div>
+          </div>
+        )
+      });
+
+      let map = mod !== 'splash'
+        ? <div className={`Map__land --${size} ${classModifier} ${classModifierStats}`}>
+            <ReactSVG
+              path={mapSRC}
+              svgClassName={`Map__svg ${animate}`}
+              className={`Map__svg-wrapper --${size} ${animate}`}
+            />
+            <div className="Map__cities">
+              <div className="inner-wrapper">
+                {cityPoints}
+              </div>
+            </div>
+            <div className="Map__aux">
+              <div className="inner-wrapper">
+                {auxPoints}
+              </div>
+            </div>
+            <div className="Map__cloud">
+              <div className="inner-wrapper">
+                {cloudPoints}
+              </div>
+            </div>
+          </div>
+        : <div className={`Map__land --${mod || ''} --${size} ${classModifier} ${classModifierStats}`}>
+            <img src={splashMap} alt="icon"/>
+            <div className="Map__cloud">
+              <div className="inner-wrapper">
+                {cloudPoints}
+              </div>
+            </div>
+          </div>
 
     return (
-      <div className={`Map --${location} --${mod || ''}`}>
-        <div className={`Map__land --${size} ${classModifier} ${classModifierStats}`}>
-          <ReactSVG
-            path={mapSRC}
-            svgClassName={`Map__svg ${animate}`}
-            className={`Map__svg-wrapper --${size} ${animate}`}
-          />
-          <div className="Map__cities">
-            <div className="inner-wrapper">
-              {cityPoints}
-            </div>
-          </div>
-          <div className="Map__aux">
-            <div className="inner-wrapper">
-              {auxPoints}
-            </div>
-          </div>
-        </div>
+      <div className={`Map --${mod || ''}`}>
+        {map}
       </div>
     );
   }

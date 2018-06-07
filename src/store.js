@@ -14,6 +14,9 @@ import { getData } from './middleware/getData';
 import { getFilteredList } from './middleware/getFilteredList';
 import { setModalVisibility } from "./middleware/setModalVisibility";
 
+// misc action
+
+
 const customMiddleWare = store => next => action => {
   if(action.type === "FETCH_DATA") {
     getData(store, next, action);
@@ -24,6 +27,9 @@ const customMiddleWare = store => next => action => {
 
   } else if (action.type === "SHOW_MODAL"){
     setModalVisibility(store, next, action);
+    next(action);
+
+  } else if (action.type === "CLEAR_LIST"){
     next(action);
 
   } else {

@@ -1,4 +1,5 @@
 import * as actions from '../components/Intro/Intro.action';
+import {setSelection} from '../components/Filters/Filters.action';
 
 export const getData = (store, next, action) => {
   store.dispatch(actions.fetchData__pending());
@@ -11,6 +12,7 @@ export const getData = (store, next, action) => {
         .then(res => res.json())
         .then(london_json => {
           store.dispatch(actions.fetchData__resolved([...uk_json, ...london_json]));
+          store.dispatch(setSelection("category", "safety"));
           next(action);
         })
         .catch(error => {

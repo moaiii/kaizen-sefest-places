@@ -56,8 +56,14 @@ class Filters extends Component<Props, State> {
         ? 'london' : 'uk' // simple toggle
     }, () => {
       this.setMobileDrawerVisibility(false);
-      this.setSelection('location', this.state.togglePosition)
+      this.setSelection('location', this.state.togglePosition);
+      this.handleReset();
     });
+  }
+
+  handleReset = () => {
+    store.dispatch(actions.clearList());
+    store.dispatch(actions.setSelection("category", "safety"));
   }
 
   handleCategorySelect = (index: number) => {
@@ -127,7 +133,8 @@ class Filters extends Component<Props, State> {
       animate={animate} 
       categories={this.state.categories} 
       handleCategorySelect={this.handleCategorySelect}
-      handleSubCategorySelect={this.handleSubCategorySelect}/>
+      handleSubCategorySelect={this.handleSubCategorySelect}
+      handleReset={this.handleReset}/>
 
     let social = <Social />
 

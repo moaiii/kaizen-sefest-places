@@ -39,3 +39,10 @@ export const setMobileDrawerVisibility = (isVisible: boolean): FilterListAction 
     payload: { isVisible } 
   };
 }
+
+export const clearList = (): FilterListAction => {
+  return { 
+    type: "CLEAR_LIST", 
+    payload: { } 
+  };
+}

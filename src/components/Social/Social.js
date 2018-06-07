@@ -45,13 +45,13 @@ export class Social extends Component<Props, State> {
       case 'facebook':
         href = 'https://www.facebook.com/sharer/sharer.php?u=' + 
         // $FlowFixMe - cant detect process.env
-        `${process.env.REACT_APP_CANNONICAL}`;
+        `${process.env.PUBLIC_URL}`;
         break;
       
       case 'linkedin':
         href = 'https://www.linkedin.com/shareArticle?mini=true&url=' +
         // $FlowFixMe - cant detect process.env
-        `${process.env.REACT_APP_CANNONICAL}` +
+        `${process.env.PUBLIC_URL}` +
         '&title=' + description +
         '&summary=%20&source=';
         break;
@@ -60,7 +60,7 @@ export class Social extends Component<Props, State> {
         href = 'https://twitter.com/intent/tweet?text=' +
         description +
         // $FlowFixMe - cant detect process.env
-        '&url=' + `${process.env.REACT_APP_CANNONICAL}`;
+        '&url=' + `${process.env.PUBLIC_URL}`;
         break;
       default: 
         alert('Oops social sharing isnt working at present');
@@ -79,7 +79,7 @@ export class Social extends Component<Props, State> {
   }
 
   handleHomeClick = () => {
-    window.open(process.env.REACT_APP_CANNONICAL);
+    window.open(process.env.PUBLIC_URL);
   }
 
   render() {
@@ -113,9 +113,13 @@ export class Social extends Component<Props, State> {
             </a>
           </div>
         </div>
-        <div className={`Social__logo`}>
-          <img src={ctmLogo} alt={`Compare the market logo`} 
-            onClick={this.handleHomeClick}/>
+        <div className={`Social__logo`} onClick={this.handleHomeClick}>
+          <p className={`brought-to-you`}>
+            Brought to you by 
+          </p>
+          <p className={`c-t-m`}>
+            Compare the market
+          </p>
         </div>
       </div>
     );

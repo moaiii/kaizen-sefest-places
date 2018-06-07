@@ -5,22 +5,28 @@ import ReactSVG from 'react-svg';
 
 // assets
 import hospital from '../../../assets/png/hospital.png';
-import shop3 from '../../../assets/png/shop3.png';
-import shop1 from '../../../assets/png/shop1.png';
+import crime from '../../../assets/png/crime.png';
+import weather from '../../../assets/png/weather.png';
 import shop2 from '../../../assets/png/shop2.png';
 
 const icons = [
-  shop2,
-  shop1,
+  crime,
+  weather,
   hospital,
-  shop3,
+  shop2,
 ]
 
 // component
-export const FilterOptions = ({animate, categories, handleCategorySelect, handleSubCategorySelect}) => {
+export const FilterOptions = ({animate, categories, handleCategorySelect, handleSubCategorySelect, handleReset}) => {
   return(
     <div className={`Filters__filters ${animate}`}>
-      <p>Filter by:</p>
+      <div className="Filters__heading">
+        <p>Filter by:</p>
+        <button className={`filters__button`} 
+          onClick={() => handleReset()}>
+          <p>RESET</p>
+        </button>
+      </div>
       
       <div className={`filters__options-container ${animate}`}>
         {categories.map((category, i) => {

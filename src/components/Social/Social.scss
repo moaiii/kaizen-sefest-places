@@ -38,3 +38,17 @@
     fill: white;
   }
 }
+
+.brought-to-you {
+  color: $grey;
+  font-size: 12px;
+  margin-top: 1rem;
+  text-align: center;
+  @include roboto;
+}
+
+.c-t-m {
+  text-align: center;
+  color: $grey;
+  @include font-lemonmilk
+}

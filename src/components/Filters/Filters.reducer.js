@@ -58,6 +58,12 @@ export default (state: State = initialState, action: Action): State => {
     })
   }
 
+  case "CLEAR_LIST": {
+    return Object.assign({}, state, {
+      filteredData: []
+    })
+  }
+
   default: {
       return state;
     }

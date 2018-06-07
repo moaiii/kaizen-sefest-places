@@ -28,41 +28,184 @@ $blue: #D0E9EE;
 $grey: #677174;
 
 $card-colors: (
+  #80D3D4,
+  #70BBE5,
   #7499EB,
-  #728DE8,
-  #7082E5,
-  #6E77E2,
-  #6D6DDF,
-  #756BDD,
-  #7C69DA,
-  #8368D7,
-  #8A66D4,
-  #9065D1,
-  #9763CF,
-  #9D61CC,
-  #A360C9,
-  #A95EC6,
-  #AF5DC3,
-  #B45BC1,
-  #BA59BE,
-  #BB58B7,
-  #B856AD,
-  #B555A3,
-  #B35398,
-  #B0528E,
-  #AD5085,
-  #AA4E7B,
-  #A74D72,
-  #A54B69,
-  #A24A60,
-  #9F4857,
-  #9C474F,
-  #9A4646,
-  #A73A41,
-  #AF2C2B,
-  #B71E15,
-  #BF1100
+  #5C82C8,
+  #3369A0,
+  #275D9B,
+  #4E46C4,
+  #6563CF,
+  #7870E8,
+  #8D72E5,
+  #A574E6,
+  #D18EEC,
+  #E081D5,
+  #E27FAD,
+  #C1719B,
+  #9B6F80,
+  #765554,
+  #9A4647,
+  #D34E48,
+  #E47C50,
+  #E79B64,
+  #F3C170,
+  #EADE73,
+  #F8ED6E,
+  #D8EB79,
+  #B9DD72,
+  #8ED97F,
+  #7BBE6D,
+  #5DAE46,
+  #5EA271,
+  #78BA8B,
+  #90E2A7
 );
+
+
+.--tower,
+.--bristol {
+  background-color: nth($card-colors, 1) !important;
+}
+.--greenwich,
+.--birmingham {
+  background-color: nth($card-colors, 2) !important;  
+}
+.--sutton,
+.--belfast {
+  
+  background-color: nth($card-colors, 3) !important;
+}
+.--newham,
+.--plymouth {
+  
+  background-color: nth($card-colors, 4) !important;
+}
+.--redbridge,
+.--sunderland {
+  
+  background-color: nth($card-colors, 5) !important;
+}
+.--wandsworth,
+.--newcastle {
+  background-color: nth($card-colors, 6) !important;  
+}
+.--richmond,
+.--leicester {
+  background-color: nth($card-colors, 7) !important;  
+}
+.--lewisham,
+.--aberdeen {
+  background-color: nth($card-colors, 8) !important;  
+}
+.--bromley,
+.--stoke-on-trent {
+  
+  background-color: nth($card-colors, 9) !important;
+}
+.--barking,
+.--bradford {
+  background-color: nth($card-colors, 10) !important;  
+}
+.--harrow,
+.--liverpool {
+  background-color: nth($card-colors, 11) !important;  
+}
+.--enfield,
+.--coventry {
+  
+  background-color: nth($card-colors, 12) !important;
+}
+.--merton,
+.--wolverhampton {
+  
+  background-color: nth($card-colors, 13) !important;
+}
+.--bexley,
+.--brighton {
+  background-color: nth($card-colors, 14) !important;  
+}
+.--barnet,
+.--manchester {
+  
+  background-color: nth($card-colors, 15) !important;
+}
+.--hounslow,
+.--derby {
+  
+  background-color: nth($card-colors, 16) !important;
+}
+.--hillingdon,
+.--sheffield {
+  background-color: nth($card-colors, 17) !important;  
+}
+.--ealing,
+.--leeds {
+  
+  background-color: nth($card-colors, 18) !important;
+}
+.--camden,
+.--nottingham {
+  background-color: nth($card-colors, 19) !important;
+}
+.--hackney,
+.--wakefield {
+  
+  background-color: nth($card-colors, 20) !important;
+}
+.--waltham,
+.--portsmouth {
+  
+  background-color: nth($card-colors, 21) !important;
+}
+.--haringey,
+.--swansea {
+  
+  background-color: nth($card-colors, 22) !important;
+}
+.--havering, 
+.--york {
+  
+  background-color: nth($card-colors, 23) !important;
+}
+.--kingston,
+.--london {
+  
+  background-color: nth($card-colors, 24) !important;
+}
+.--southwark,
+.--edinburgh {
+  
+  background-color: nth($card-colors, 25) !important;
+}
+.--croydon,
+.--glasgow {
+  background-color: nth($card-colors, 26) !important;  
+}
+.--kensington,
+.--hull {
+  background-color: nth($card-colors, 27) !important;  
+}
+.--lambeth,
+.--cardiff {
+  
+  background-color: nth($card-colors, 28) !important;
+}
+.--westminster,
+.--southampton {
+  
+  background-color: nth($card-colors, 29) !important;
+}
+.--hammersmith,
+.--peterborough {
+  background-color: nth($card-colors, 30) !important;  
+}
+.--brent {
+  background-color: nth($card-colors, 31) !important;  
+}
+.--islington {
+  background-color: nth($card-colors, 31) !important;
+}
 
 @mixin laptop {
   @media (max-width: 1024px) {

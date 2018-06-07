@@ -6,7 +6,7 @@ export const FilterToggle = ({animate, togglePosition, handleToggle}) => (
     onClick={() => handleToggle()}> 
     <p>UK</p>
     <div className={`switch --${togglePosition}`}>
-      <div className={`switch-indicator --${togglePosition}`}></div>
+      <div className={`switch-indicator --${togglePosition}-switch`}></div>
       <div className={`switch-track`}></div>
     </div>
     <p>London</p>

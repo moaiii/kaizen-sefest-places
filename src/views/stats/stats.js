@@ -48,7 +48,7 @@ export class Stats extends Component<Props, State> {
     let data = store
       .getState().IntroReducer.data
       .filter(city => {
-        return city.Name.toLowerCase() === decodeURI(urlCity).toLowerCase()
+        return city.name.toLowerCase() === decodeURI(urlCity).toLowerCase()
       })[0];
 
     this.setState({ data, rank });
@@ -65,16 +65,16 @@ export class Stats extends Component<Props, State> {
         <FaAngleLeft className={`stats-mobile-header-arrow`}/>
       </Link>
       <p>{rank}</p>
-      <p>{data.Name}</p>
+      <p>{data.name}</p>
     </div>
 
-    if(typeof data.Name !== 'undefined') {
+    if(typeof data.name !== 'undefined') {
       return (
         <div className="Stats">
           {statsHeader}
           <Card city={data} index={parseInt(rank, 10)} size={'large'}/>
           <Grid data={data}/>
-          <Map city={data.Name.toLowerCase()} size={`large`} mod={''}/>
+          <Map city={data.name.toLowerCase()} size={`large`} mod={''}/>
         </div>
       );
     } else {

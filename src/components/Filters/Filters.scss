@@ -2,6 +2,10 @@
   background-color: white;
   position: fixed;
   height: 100vh;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @include tablet {
     padding: 1rem;
@@ -16,7 +20,19 @@
       transition: transform 0.5s ease;
       transform: translateX(0%);
 
-      @media (min-width: 550px) {
+      @media (max-width: 768px) {
+        padding: 1rem 10rem;
+      }
+
+      @media (max-width: 700px) {
+        padding: 1rem 8rem;
+      }
+
+      @media (max-width: 600px) {
+        padding: 1rem 6rem;
+      }
+
+      @media (max-width: 500px) {
         padding: 1rem 4rem;
       }
     }
@@ -27,7 +43,7 @@
   width: 50%;
   margin: 0 auto;
   position: relative;
-  min-height: 200px;
+  height: 150px;
   display: flex;
   align-items: center;
 
@@ -35,6 +51,7 @@
     font-size: 20px;
     position: absolute;
     top: 50%;
+    line-height: 1.1;
     transform: translateY(-50%);
     @include font-lemonmilk;
     color: $grey;
@@ -57,7 +74,7 @@
     @include font-lemonmilk;
     color: $grey;
     text-align: center;
-    font-size: 12px;
+    font-size: 16px;
   }
 
   @include tablet {
@@ -82,7 +99,7 @@
   border-radius: 50%;
   transition: transform 1s ease;
   
-  &.--london {
+  &.--london-switch {
     transition: transform 1s ease;
     transform: translateX(50px) translateY(-50%);
   }
@@ -171,13 +188,19 @@
     }
   }
 
+  // &:nth-of-type(1) {
+  //   max-height: 170px;
+  // }
+  // &:nth-of-type(2) {
+  //   max-height: 170px;
+  // }
+  &:nth-of-type(3) {
+    padding: 0rem 1rem 0rem 1rem;
+  }
+  &:nth-of-type(4) {
+    padding: 0rem 1rem 0rem 1rem;
+  }
   @include tablet {
-    &:nth-of-type(3) {
-      padding: 0rem 1rem 1rem 1rem;
-    }
-    &:nth-of-type(4) {
-      padding: 0rem 1rem 1rem 1rem;
-    }
   }
 }
 
@@ -199,12 +222,13 @@
   }
 
   li {
-    margin: 5px 0;
+    margin: 8px 0;
     opacity: 0.7;
     list-style: none;
     font-size: 10px;
     @include roboto;
     color: $grey;
+    text-align: center;
     cursor: pointer;
     line-height: 1.1;
     
@@ -233,6 +257,43 @@
       &:hover {
         cursor: pointer;
       }
+    }
+  }
+}
+
+.Filters__heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+
+  p {
+    @include font-lemonmilk;
+    color: grey;
+    padding-left: 1rem;
+    font-size: 12px;
+  }
+
+  button {
+    opacity: 0.2;
+    max-width: 75px;
+    border: 2px solid $grey;
+    transition: all 0.15s ease;
+
+    p {
+      padding-left: 0rem !important;        
+    }
+
+    &:hover {
+      p {
+        padding-left: 0rem !important;        
+        color: white;
+      }
+
+      opacity: 1;
+      transition: all 0.15s ease;
+      background-color: #D34E48;
+      border: 2px solid #D34E48;
     }
   }
 }

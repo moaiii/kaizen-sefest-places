@@ -3,15 +3,11 @@
     "name": "crime",
     "sub": [
       {
-        "name": "Burglary",
+        "name": "burglary",
         "selected": false
       },
       {
-        "name": "Robbery",
-        "selected": false
-      },
-      {
-        "name": "Violence & Sexual Offences",
+        "name": "robbery",
         "selected": false
       }
     ],
@@ -34,19 +30,19 @@
     "name": "healthcare",
     "sub": [
       {
-        "name": "A&E attendances with wait < 4 hr",
+        "name": "a&e attendance wait < 4hr",
         "selected": false
       },
       {
-        "name": "Doctors /person",
+        "name": "doctors per person",
         "selected": false
       },
       {
-        "name": "Ambulance Response Time (min)",
+        "name": "median ambulance response time",
         "selected": false
       },
       {
-        "name": "Life-Threatening Ambulance Response < 8 Minutes",
+        "name": "ambulance response times < 8min",
         "selected": false
       }],
     "selected": false
@@ -55,14 +51,14 @@
     "name": "property",
     "sub": [
       {
-        "name": "Average House Price", 
+        "name": "average house price", 
         "selected": false},
       {
-        "name": "Average Property Age (Years)", 
+        "name": "average property age", 
         "selected": false
       },
       {
-        "name": "Ground Movement", 
+        "name": "ground movement", 
         "selected": false
       }
     ],

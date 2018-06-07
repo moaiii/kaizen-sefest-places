@@ -54,7 +54,7 @@ export class Overview extends Component<Props, State> {
     let cities = data 
       ? <div className={`Overview__card-container`}>
         {data
-          .filter(x => x.DataType === location)
+          .filter(x => x.datatype === location)
           .map((city, index) => 
           <Card
             key={`${index}-card`} 
